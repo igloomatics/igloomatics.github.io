@@ -36,7 +36,7 @@ timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for
 author:
   type      : # "person" (default), "organization"
   name      : Igloos
-  url       :
+  url       : https://github.com/igloomatics
   avatar    : # path or url of avatar image (square)
   bio       : Maybe she is a cat.
   email     : igloomatics@gmail.com
