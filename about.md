@@ -30,6 +30,8 @@ key: page-about
 
 ![image](https://github.com/igloomatics/igloomatics.github.io/blob/main/igloos.jpg)
 
+![image](https://github.com/igloomatics/igloomatics.github.io/blob/main/2girls.jpg)
+
 - 是立志学好数学和CS的萌新一枚(◍ ╹╹ ◍)
 - 性别是沃尔玛购物袋
 - 偶尔会更新点乱七八糟的
