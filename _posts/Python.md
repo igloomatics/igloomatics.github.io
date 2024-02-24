@@ -1,7 +1,10 @@
 ---
-layout: article
-title: Document - Writing Posts
-mathjax: true
+title: Python入门
+tags: TeXt
+article_header:
+  type: cover
+  image:
+    src: /screenshot.jpg
 ---
 
 为保证高效率学习，太简单或者不常用，将不被笔记。笔记也会迭代版本更新。
