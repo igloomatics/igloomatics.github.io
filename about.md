@@ -27,7 +27,7 @@ key: page-about
 ---
 
 这里是Igloos的赛博垃圾桶!使用了GitHub上开源的静态TeXt主题。
-![TeXt主题](https://github.com/igloomatics/igloomatics.github.io/blob/main/2girls.JPG)。
+![TeXt主题](https://github.com/igloomatics/igloomatics.github.io/blob/main/2girls.jpg)。
 
 
 TeXt is a super customizable Jekyll theme for personal site, team site, blog, project, documentation, etc. Similar to iOS 11 style, it has large and prominent titles, round buttons and cards.
