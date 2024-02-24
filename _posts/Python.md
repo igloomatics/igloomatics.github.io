@@ -1,3 +1,9 @@
+---
+layout: article
+title: Document - Writing Posts
+mathjax: true
+---
+
 为保证高效率学习，太简单或者不常用，将不被笔记。笔记也会迭代版本更新。
 
 *2023年夏季版*		-- 笔记大量摘自 www.runoob.com
