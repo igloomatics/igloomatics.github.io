@@ -30,7 +30,7 @@ key: page-about
 
 ![Image](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg "Image_circle+shadow"){:.circle.shadow}
 
-![Image](https://raw.githubusercontent.com/igloomatics/igloomatics.github.io/tree/igloos.jpg "Image circle"){:.circle}
+![Image](https://raw.githubusercontent.com/igloomatics/photos/blob/main/igloos.jpg "Image circle"){:.circle}
 
 - 是立志学好数学和CS的萌新一枚(◍ ╹╹ ◍)
 - 性别是沃尔玛购物袋
