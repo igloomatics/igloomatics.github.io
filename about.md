@@ -28,15 +28,9 @@ key: page-about
 
 这里是Igloos的赛博垃圾桶！使用了GitHub上开源的[TeXt主题](https://kitian616.github.io/jekyll-TeXt-theme/test/)。
 
-![Image](https://github.com/igloomatics/igloomatics.github.io/blob/main/igloos.jpg)
-
-![Image](https://github.com/igloomatics/igloomatics.github.io/blob/main/2girls.jpg)
-
 ![Image](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg "Image_circle+shadow"){:.circle.shadow}
 
-![Image](https://github.com/igloomatics/igloomatics.github.io/tree/main/assets/images/logo.jpg "Image circle"){:.circle}
-
-![Image](https://raw.githubusercontent.com/igloomatics/igloomatics.github.io/tree/main/assets/images/logo.jpg "Image circle"){:.circle}
+![Image](https://raw.githubusercontent.com/igloomatics/igloomatics.github.io/tree/igloos.jpg "Image circle"){:.circle}
 
 - 是立志学好数学和CS的萌新一枚(◍ ╹╹ ◍)
 - 性别是沃尔玛购物袋
