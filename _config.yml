@@ -20,9 +20,9 @@ text_skin: chocolate # "default" (default), "dark", "forest", "ocean", "chocolat
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
 url     : # the base hostname & protocol for your site e.g. https://www.someone.com
 baseurl : # does not include hostname
-title   : Igloo's Blog
+title   : Igloos' Blog
 description: > # this means to ignore newlines until "Language & timezone"
-  Welcome
+  Nodody cares there!
 
 
 ## => Language and Timezone
@@ -39,7 +39,7 @@ author:
   url       :
   avatar    : # path or url of avatar image (square)
   bio       : Maybe she is a cat.
-  email     :
+  email     : igloomatics@gmail.com
   facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
   twitter   : # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
   weibo     : # "user_id"   the last part of your profile url, e.g. https://www.weibo.com/user_id/profile?...
