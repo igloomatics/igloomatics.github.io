@@ -16,11 +16,11 @@
 
 ## => Site Settings
 ##############################
-text_skin: forest # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
+text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
 url     : # the base hostname & protocol for your site e.g. https://www.someone.com
 baseurl : # does not include hostname
-title   : Igloos的博客
+title   : 没有想好怎么取名
 description: > # this means to ignore newlines until "Language & timezone"
   Nodody cares there!
 
@@ -36,10 +36,10 @@ timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for
 author:
   type      : # "person" (default), "organization"
   name      : Igloos
-  url       : https://github.com/igloomatics
+  url       : # https://github.com/igloomatics
   avatar    : # path or url of avatar image (square)
   bio       : Maybe she is a cat.
-  email     : igloomatics@gmail.com
+  email     : # igloomatics@gmail.com
   facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
   twitter   : # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
   weibo     : # "user_id"   the last part of your profile url, e.g. https://www.weibo.com/user_id/profile?...
