@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="/favicon.jpg" type="image/x-icon" />
+    <title>
+        
+            机器学习 |
+        
+        Hello
+    </title>
+    
+<link rel="stylesheet" href="/css/style.min.css">
+
+    
+<link rel="stylesheet" href="/css/partial/atom-one-dark.min.css">
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+    <body>
+        
+            <header>
+    <a class="title" href="/">
+        <h1>
+            Hello
+        </h1>
+        
+    </a>
+    <nav>
+        <p>
+            <a href="/">Home</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/archives">Archives</a>
+        </p>
+    </nav>
+</header>
+        
+        <main>
+    
+    <h1>
+        机器学习
+    </h1>
+    
+    <p>
+        <i><time>2024/07/03</time></i>
+    </p>
+    <h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><blockquote>
+<p>2022.7.2</p>
+</blockquote>
+<img src="/Users/xuwei/Library/Application Support/typora-user-images/image-20240703002430180.png" alt="image-20240703002430180" style="zoom:50%;" />
+
+<hr>
+<h3 id="机器学习定义"><a href="#机器学习定义" class="headerlink" title="机器学习定义"></a>机器学习定义</h3><p>[学术定义] 对于某类任务<strong>T</strong>和 性能度量<strong>P</strong>，若一个计算机程序在<strong>T</strong>上以<strong>P</strong>衡量的性能随着经验<strong>E</strong>而自我完善， 那么我们称该计算机在从经验<strong>E</strong>中学习。</p>
+<p>任务T：识别并分类图像中的手写文字</p>
+<p>性能度量P：分类的正确率Accuracy</p>
+<p>经验E：已分类的手写文字数据库</p>
+<p>[工程定义] 使用数据和样例而非专业知识，自动创建体系去完成复杂任务。</p>
+<hr>
+<h3 id="模式识别定义"><a href="#模式识别定义" class="headerlink" title="模式识别定义"></a>模式识别定义</h3><p>模式识别是指人类或者计算机系统通过观察和分析数据中的规律、特征，从中识别出重复出现的模式或者结构。</p>
+<p>“找规律”</p>
+<hr>
+<h3 id="相关学科"><a href="#相关学科" class="headerlink" title="相关学科"></a>相关学科</h3><p>模式识别、统计学习、数据挖掘、计算机视觉、语音识别、自然语言处理</p>
+<p>深度学习$\subseteq$机器学习$\subseteq$人工智能</p>
+<hr>
+<h3 id="机器学习的分类"><a href="#机器学习的分类" class="headerlink" title="机器学习的分类"></a>机器学习的分类</h3><p><strong>分类1：是否带有分类标记的样本</strong></p>
+<ul>
+<li><p><strong>监督学习</strong>：有标签数据，直接反馈，预测结果&#x2F;未来</p>
+<blockquote>
+<p>目标：得到映射关系f: 样本学习–&gt;样本特征</p>
+</blockquote>
+<blockquote>
+<p>分类(值域是离散型)、回归(值域是连续型)</p>
+</blockquote>
+<ul>
+<li>线性回归：经典划线，二分类</li>
+<li>K-Nearest</li>
+<li>Logistic回归</li>
+<li>支持向量机SVM</li>
+<li>决策树</li>
+<li>随机森林</li>
+<li>神经网络</li>
+</ul>
+</li>
+<li><p><strong>无监督学习</strong>：无标签，无反馈，寻找隐藏结构</p>
+<blockquote>
+<p>聚类、降维</p>
+</blockquote>
+<ul>
+<li><p>主成分分析PCA (先找出第一主轴，使得投影数据的方差最大)</p>
+</li>
+<li><p>局部线性嵌入LLE：一种流形学习技术</p>
+</li>
+<li><p>异常检测</p>
+</li>
+</ul>
+</li>
+<li><p><strong>半监督学习</strong>：监督学习+无监督学习。通过大量无标记数据辅助少量已标记数据进行学习，从而提高学习效果。</p>
+</li>
+<li><p><strong>强化学习</strong>：建立智能体Agent，感受环境变化。决策过程，奖励机制，学习一系列的行动</p>
+<blockquote>
+<p>MDP马尔可夫决策过程</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>分类2：是否能进行动态增量学习</strong></p>
+<ul>
+<li>在线学习 (边学边测试，动态)</li>
+<li>批量学习 (先学后测试，静态)</li>
+</ul>
+<p><strong>分类3：将分类数据点和已知数据点进行匹配&#x2F;对训练数据进行检测，建立预测模型</strong></p>
+<ul>
+<li><p>基于样例的学习 (抄例子)</p>
+<ul>
+<li>KNN</li>
+</ul>
+</li>
+<li><p>基于模型的学习(学规则)</p>
+<ul>
+<li>生成式模型(生成样例数据)</li>
+<li>判别式模型</li>
+</ul>
+<blockquote>
+<p>这两个模型结合不就是GAN吗？？？</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h3 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h3><ul>
+<li><p>特征理解与选择:从现有特征中选择出最有效的特征</p>
+</li>
+<li><p>特征清洗与增强:删除和填充含缺失值的数据，最大化数据价值 </p>
+</li>
+<li><p>持征提取与转化:将现有特征进行整合，产生更为有效的特征 </p>
+</li>
+<li><p>特征构建与学习:通过新数据创造新特征，或学习出新特征</p>
+</li>
+</ul>
+<hr>
+<h3 id="机器学习的主要挑战"><a href="#机器学习的主要挑战" class="headerlink" title="机器学习的主要挑战"></a>机器学习的主要挑战</h3><p>数据、算力、人</p>
+<ol>
+<li>训练数据的数量不足：题做少了</li>
+<li>训练数据不具有代表性：</li>
+<li>训练数据的质量差：比如充满错误、异常值、缺失、噪声</li>
+<li>无关特征，互相关特征：各个特征尽量少相关，最好相互独立。</li>
+</ol>
+<p>​	特征的多重共线性指某些特征可表达为其他特征的线性组合，导致算法极不稳定</p>
+<ol start="5">
+<li>过拟合：模型完美适应于训练集数据，但泛化能力差。刷题刷傻了</li>
+</ol>
+<p>​	当模型相对于训练数据过于复杂时，容易发生过拟合</p>
+<p>​	<strong>过拟合的解决方案</strong>：</p>
+<p>​	针对模型的：</p>
+<p>​		(1) 减少模型参数(what:简化模型)</p>
+<p>​		(2) 优化模型特征(what:特征工程)</p>
+<p>​		(3) 约束模型参数(how:对复杂性进行惩罚的正则化)</p>
+<p>​	针对数据的：</p>
+<p>​		(1)增加训练数据(why:增大过拟合难度)</p>
+<p>​		(2)改善数据质量(how:填补数据缺失，清除异常值)</p>
+<ol start="6">
+<li><p>欠拟合：模型太简单，没有学习到数据中的特征。题做少了。</p>
+<p><strong>欠拟合的解决方案：</strong></p>
+<p>针对模型的：</p>
+<p>​	(1)添加模型参数(复杂化模型)</p>
+<p>​	(2)优化模型特征(特征工程)</p>
+<p>​	(3)放松模型约束(降低复杂度正则项的惩罚因子值)</p>
+</li>
+</ol>
+<hr>
+<h3 id="机器学习实例"><a href="#机器学习实例" class="headerlink" title="机器学习实例"></a>机器学习实例</h3><p>1.数据采集：划分为training set 和 testing set</p>
+<p>2.特征设计</p>
+<p>3.模型训练：选择2个特征的线性模型</p>
+<p>4.模型验证</p>
+<p>分类错误原因：</p>
+<p>1.训练数据不充分 (见得少，做题做少了)</p>
+<p>2.特征设计不全面 (粗心)</p>
+<p>3.模型选择不合理 (没学过这个方法，没试到这个方法)</p>
+<blockquote>
+<p>注意我们不是直接从数据到结果，而是数据-&gt;特征-&gt;模型-&gt;结果</p>
+</blockquote>
+<hr>
+<h3 id="模式识别系统的组成"><a href="#模式识别系统的组成" class="headerlink" title="模式识别系统的组成"></a>模式识别系统的组成</h3><p>处理：输入和输出是同样性质的数值或特征</p>
+<p>识别：输入的是对象特征，输出的是它的分类和描述。</p>
+<p>模式识别三大任务</p>
+<ol>
+<li><p>特征设计</p>
+</li>
+<li><p>分类器设计</p>
+</li>
+<li><p>对样本分类</p>
+</li>
+</ol>
+<img src="/Users/xuwei/Library/Application Support/typora-user-images/image-20240703003029314.png" alt="image-20240703003029314" style="zoom:50%;" />
+
+<p>样例example：已知样本</p>
+<p>实例instance：未知样本</p>
+<p>模式&#x3D;样本</p>
+<h4 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h4><ul>
+<li><p>训练集:样本的集合，用它来设计开发模式分类器。在有监督分类中， 已知类别样本的集合，在无监督分类中，是未知类别样本的集合。但 都被用来提取“关于各类之间的分类知识”，即使这些样本本身没有 类别信息，仍然隐含着某种分类信息!</p>
+</li>
+<li><p>验证集:既可以认为是宽泛的训练集中的一部分，也可以理解为独立 于训练集的有监督样本集。在一次特定的模型训练过程中，两者不重 合;但是在多次模型训练(伴随不同模型超参数设置)，两者之间是 可以交换部分数据的。其作用在于:通过对特定超参数或特定子模型 的设置后，对训练后的模型进行“交付前测试”，以便从多个交付模 型中选择泛化性能最优者。</p>
+</li>
+<li><p>测试集:在设计与调优分类系统时没有用过的独立样本集。</p>
+<blockquote>
+<p>验证集 测试集 有什么区别？</p>
+</blockquote>
+</li>
+<li><p>系统评价原则:为了更好地对模式识别系统性能进行评价，必须使用 一组独立于训练集的测试集对系统进行测试</p>
+</li>
+</ul>
+<h4 id="紧致集"><a href="#紧致集" class="headerlink" title="紧致集"></a>紧致集</h4><blockquote>
+<p>数据点之间的距离比较接近或者分布比较集中</p>
+</blockquote>
+<ol>
+<li>要求临界点很少</li>
+<li>集合内的任意两点的连线，在线上的点属于同一集合（凸集）</li>
+<li>集合内的每一个点都有足够大的邻域，在邻域内只包含同</li>
+</ol>
+<p>一集合的点 (开集)</p>
+<p>模式识别的要求: 满足紧致集，才能很好的分类;如果不 满足紧致集，就要采取变换的方法，以满足紧致集。</p>
+
+</main>
+        
+            <footer style="padding:25px 0;">
+    
+    <span>
+        Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </span>
+    <span>
+        Theme <a target="_blank" rel="noopener" href="https://github.com/mouyase/hexo-theme-zen">Zen</a>
+    </span>
+</footer>
+        
+    </body>
+</html>
