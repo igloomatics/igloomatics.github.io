@@ -255,6 +255,28 @@ p<span class="token operator">-></span>next <span class="token operator">=</span
 <p><img src="https://s2.loli.net/2024/09/18/FbgONaYSP4VyQMK.png" alt="image-20240918112048769" /></p>
 <pre class="line-numbers language-C" data-language="C"><code class="language-C">q &#x3D; p-&gt;next
 p-&gt;next &#x3D; q-&gt;next<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="建立单链表"><a class="markdownIt-Anchor" href="#建立单链表"></a> 建立单链表</h4>
+<p>头插法</p>
+<img src="https://s2.loli.net/2024/09/18/Rs6LijYGupHvQ1N.jpg" alt="img" style="zoom:80%;" />
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">void CreateListF(T a[],int n) &#123; &#x2F;&#x2F;头插法建立单链表
+for (int i&#x3D;0;i&lt;n;i++) &#x2F;&#x2F;循环建立数据结点
+		&#123; LinkNode&lt;T&gt;* s&#x3D;new LinkNode&lt;T&gt;(a[i]);&#x2F;&#x2F;创建数据结点s
+		s-&gt;next&#x3D;head-&gt;next; &#x2F;&#x2F;将结点s插入head结点之后
+		head-&gt;next&#x3D;s;
+		&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>尾插法</p>
+<img src="https://s2.loli.net/2024/09/18/o3zMl6mtrCv4P8Z.jpg" alt="img" style="zoom:80%;" />
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">void CreateListR(T a[],int n) &#123; &#x2F;&#x2F;尾插法建立单链表
+	LinkNode&lt;T&gt;* s,*r;
+	r&#x3D;head; &#x2F;&#x2F;r指向尾结点,开始时指向头结点
+	for (int i&#x3D;0;i&lt;n;i++)&#123; &#x2F;&#x2F;循环建立数据结点
+		s&#x3D;new LinkNode&lt;T&gt;(a[i]); &#x2F;&#x2F;创建数据结点s
+		r-&gt;next&#x3D;s; &#x2F;&#x2F;将结点s插入结点r之后
+		r&#x3D;s;
+	&#125;
+	r-&gt;next&#x3D;NULL; &#x2F;&#x2F;将尾结点的next域置为NULL
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
   
 
