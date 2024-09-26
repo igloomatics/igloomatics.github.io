@@ -215,9 +215,12 @@
 </li>
 <li>顺序表、链表：<strong>物理结构</strong>，他是实现一个结构实际物理内存上的结构。比如顺序表就是用<strong>数组</strong>实现。而链表主要用<strong>指针</strong>完成工作。不同的结构在不同的场景有不同的区别。</li>
 </ul>
+<hr />
 <h2 id="顺序表"><a class="markdownIt-Anchor" href="#顺序表"></a> 顺序表</h2>
 <p>读表易，插表难</p>
-<p><img src="https://github.com/javasmall/bigsai-algorithm/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/assets/image-20231029221307141.png" alt="image-20231029221307141" /></p>
+<p>Q: 数组和顺序表有什么区别</p>
+<p>A: 顺序表是一种线性数据结构，而数组是各种编程语言中的基本数据类型，顺序表的底层实现通常也是基于数组，但与数组不同的是，数组的长度固定，顺序表的长度是可变的，可以根据需要动态扩展和缩减。</p>
+<p>初学者可以把顺序表简单视为<strong>可变长度的数组</strong>。</p>
 <h4 id="建立顺序表"><a class="markdownIt-Anchor" href="#建立顺序表"></a> 建立顺序表</h4>
 <p>依次将a中的元素添加到data数组的末尾</p>
 <pre class="line-numbers language-C" data-language="C"><code class="language-C">void CreateList(T a[],int n) &#x2F;&#x2F;由数组a中元素整体建立顺序表
@@ -229,6 +232,7 @@
 			length++; &#x2F;&#x2F;添加后元素个数增加1
 	&#125;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr />
 <h2 id="链表"><a class="markdownIt-Anchor" href="#链表"></a> 链表</h2>
 <p>读表难，插表易</p>
 <p>结点包含(元素值，前继，后继)</p>
