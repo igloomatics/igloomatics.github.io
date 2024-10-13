@@ -11,34 +11,34 @@
   <meta charset="utf-8">
 
   
-  <title>Igloos</title>
+  <title>栈</title>
   
-  <link rel="canonical" href="http://example.com/">
+  <link rel="canonical" href="http://example.com/2024/10/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%88/">
   
-  <meta name="description" content="">
+  <meta name="description" content="学了一点数据结构，发现数据结构的概念都比较直观易懂，最重要的还是掌握算法思维以及代码实现。 栈(stack)的结构非常简单，先进后出。导入头文件#include&amp;lt;stack&amp;gt;常规操作有s.empty()、s.push(e)、s.pop()、s.top()。 比较经典的例题是括号匹配、回文">
   
   
   <meta name="author" content="Igloos">
   
-  <meta property="og:image" content="http://example.com/images/thumbnail.jpg">
+  <meta property="og:image" content="http://example.comundefined">
   
   <meta property="og:site_name" content="Igloos" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Igloos" />
+  <meta property="og:title" content="栈" />
   
-  <meta property="og:description" content="">
+  <meta property="og:description" content="学了一点数据结构，发现数据结构的概念都比较直观易懂，最重要的还是掌握算法思维以及代码实现。 栈(stack)的结构非常简单，先进后出。导入头文件#include&amp;lt;stack&amp;gt;常规操作有s.empty()、s.push(e)、s.pop()、s.top()。 比较经典的例题是括号匹配、回文">
   
-  <meta property="og:url" content="http://example.com/" />
+  <meta property="og:url" content="http://example.com/2024/10/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%88/" />
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Igloos">
+  <meta name="twitter:title" content="栈">
   
-  <meta name="twitter:description" content="">
+  <meta name="twitter:description" content="学了一点数据结构，发现数据结构的概念都比较直观易懂，最重要的还是掌握算法思维以及代码实现。 栈(stack)的结构非常简单，先进后出。导入头文件#include&amp;lt;stack&amp;gt;常规操作有s.empty()、s.push(e)、s.pop()、s.top()。 比较经典的例题是括号匹配、回文">
   
   
-  <meta name="twitter:image" content="http://example.com/images/thumbnail.jpg">
+  <meta name="twitter:image" content="http://example.comundefined">
   
-  <meta name="twitter:url" content="http://example.com/" />
+  <meta name="twitter:url" content="http://example.com/2024/10/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%88/" />
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -197,90 +197,35 @@
   
 </div>
         <div class="trans">
-          <div class="row">
-  <div class="column">
-    <!-- Main information, edit it on theme/_config.yml -->
-    <h2 class="mb-2"> </h2>
-    <p>&#34;Un jour je serai de retour près de toi&#34;</p>
-    <p>总有一天我会回到你身边。</p>
-  </div>
-</div>
+            <h2>栈</h2>
 
-<h3>Recent Posts</h3>
+  <p><a class="classtest-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a> — Oct 13, 2024</p> 
+  <p>学了一点数据结构，发现数据结构的概念都比较直观易懂，最重要的还是掌握<code>算法思维</code>以及<code>代码实现</code>。</p>
+<p>栈(stack)的结构非常简单，先进后出。导入头文件<code>#include&lt;stack&gt;</code>常规操作有<code>s.empty()</code>、<code>s.push(e)</code>、<code>s.pop()</code>、<code>s.top()</code>。</p>
+<p>比较经典的例题是括号匹配、回文字符判断等。非常适合具有&quot;翻转&quot;特性的问题。</p>
+<blockquote>
+<p>设计一个算法利用顺序栈将一个十进制正整数d转换为r（2≤r≤16）进制的数，要求r进制数采用字符串string表示。</p>
+</blockquote>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">string convert(int d,int r)
+&#123;
+    stack&lt;char&gt; s;
+    const string digits&#x3D;&quot;0123456789ABCEDF&quot;;
+    string result ;
+    if(d&#x3D;&#x3D;0)return 0;
+    else if(d&gt;0)&#123;
+        int remainder&#x3D;d%r;    
+        s.push(digits[remainder]);
+        d&#x2F;&#x3D;r;
+   &#125;
+   while(!s.empty())&#123;
+       result +&#x3D; s.top() ; &#x2F;&#x2F;注意result是一个字符串!不是整型!!
+       s.pop();
+   &#125;
+   return result;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+  
 
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Oct 13, 2024</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2024/10/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%88/" >
-      
-        栈
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Oct 10, 2024</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2024/10/10/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" >
-      
-        神经网络
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Oct 9, 2024</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2024/10/09/%E7%AE%97%E6%B3%95%E5%8D%9A%E5%BC%88%E8%AE%BA(4)_%E8%83%8C%E5%8C%85%E6%8B%8D%E5%8D%96/" >
-      
-        算法博弈论(4)背包拍卖
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Oct 9, 2024</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2024/10/09/%E7%AE%97%E6%B3%95%E5%8D%9A%E5%BC%88%E8%AE%BA(3)_%E8%BF%88%E5%B0%94%E6%A3%AE%E5%BC%95%E7%90%86/" >
-      
-        算法博弈论(3)迈尔森引理
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Oct 2, 2024</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2024/10/02/%E7%AE%97%E6%B3%95%E5%8D%9A%E5%BC%88%E8%AE%BA(2)_%E4%BA%8C%E4%BB%B7%E6%8B%8D%E5%8D%96/" >
-      
-        算法博弈论(2)二价拍卖
-      
-    </a>
-  </div>
-</div>
-
-
-<h4> <a href="/archives">All Posts</a></h4>
 
           <div class="row mt-2">
   
