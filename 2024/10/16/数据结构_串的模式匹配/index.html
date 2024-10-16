@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+
+  
+  <title>串的模式匹配</title>
+  
+  <link rel="canonical" href="http://example.com/2024/10/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E4%B8%B2%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/">
+  
+  <meta name="description" content="一个人能能走的多远不在于他在顺境时能走的多快，而在于他在逆境时多久能找到曾经的自己。 ——KMP 花里胡哨的, 顺境快才是真的快  ——BF  串：字母元素的线性表 任务：在文本串s中快速查找模式串p 字符串匹配算法KMP(Leetcode)  BF “打暴力谁不会啊？” 平均时间复杂度O(mn)O">
+  
+  
+  <meta name="author" content="Igloos">
+  
+  <meta property="og:image" content="http://example.comundefined">
+  
+  <meta property="og:site_name" content="Igloos" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="串的模式匹配" />
+  
+  <meta property="og:description" content="一个人能能走的多远不在于他在顺境时能走的多快，而在于他在逆境时多久能找到曾经的自己。 ——KMP 花里胡哨的, 顺境快才是真的快  ——BF  串：字母元素的线性表 任务：在文本串s中快速查找模式串p 字符串匹配算法KMP(Leetcode)  BF “打暴力谁不会啊？” 平均时间复杂度O(mn)O">
+  
+  <meta property="og:url" content="http://example.com/2024/10/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E4%B8%B2%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="串的模式匹配">
+  
+  <meta name="twitter:description" content="一个人能能走的多远不在于他在顺境时能走的多快，而在于他在逆境时多久能找到曾经的自己。 ——KMP 花里胡哨的, 顺境快才是真的快  ——BF  串：字母元素的线性表 任务：在文本串s中快速查找模式串p 字符串匹配算法KMP(Leetcode)  BF “打暴力谁不会啊？” 平均时间复杂度O(mn)O">
+  
+  
+  <meta name="twitter:image" content="http://example.comundefined">
+  
+  <meta name="twitter:url" content="http://example.com/2024/10/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E4%B8%B2%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Preload fonts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preload" href="../fonts/dm-serif-display-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/inter-v2-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+<link rel="stylesheet" href="/css/normalize.css">
+
+  
+<link rel="stylesheet" href="/css/skeleton.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+<link rel="stylesheet" href="/css/prism-dark.css">
+
+  
+<link rel="stylesheet" href="/css/prism-line-numbers.css">
+
+  <!-- User css -->
+  
+  
+<link rel="stylesheet" href="/css/user.css">
+
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #6D9DC5;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #6D9DC5 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #6D9DC5;
+  }
+  .nanobar .bar {
+    background: #6D9DC5;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #6D9DC5;
+    border-color: #6D9DC5;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #6D9DC5;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="two columns" style="max-width: 50px">
+    <h1 class="mt-2 mode">
+      <div onclick=setDarkMode(true) id="darkBtn">🌑</div>
+      <div onclick=setDarkMode(false) id="lightBtn" class=hidden>🌕</div>
+      <script >
+        if (localStorage.getItem('preferredTheme') == 'dark') {
+          setDarkMode(true)
+        }
+        function setDarkMode(isDark) {
+          var darkBtn = document.getElementById('darkBtn')
+          var lightBtn = document.getElementById('lightBtn')
+          if (isDark) {
+            lightBtn.style.display = "block"
+            darkBtn.style.display = "none"
+            localStorage.setItem('preferredTheme', 'dark');
+          } else {
+            lightBtn.style.display = "none"
+            darkBtn.style.display = "block"
+            localStorage.removeItem('preferredTheme');
+          }
+          document.body.classList.toggle("darkmode");
+        }
+      </script>
+    </h1>
+  </div>
+
+  <div class="six columns ml-1">
+    <h1 class="mt-2">
+      Igloos
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">Home</a>
+        
+          
+          <a href="/tags" class="ml">Tags</a>
+          
+        
+          
+          <a href="/mutter" class="ml">Mutter</a>
+          
+        
+          
+          <a href="/links" class="ml">Links</a>
+          
+        
+          
+          <a href="/about" class="ml">About</a>
+          
+        
+        
+      </div>
+    </div>
+    <hr style="margin-bottom: 2.6rem">
+  </div>
+  
+</div>
+        <div class="trans">
+            <h2>串的模式匹配</h2>
+
+  <p><a class="classtest-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a> — Oct 16, 2024</p> 
+  <blockquote>
+<p>一个人能能走的多远不在于他在顺境时能走的多快，而在于他在逆境时多久能找到曾经的自己。 ——KMP</p>
+<p>花里胡哨的, 顺境快才是真的快  ——BF</p>
+</blockquote>
+<p>串：字母元素的线性表</p>
+<p>任务：在<strong>文本串s</strong>中快速查找<strong>模式串p</strong></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/array-and-string/cpoo6/">字符串匹配算法KMP(Leetcode)</a></p>
+<h2 id="bf"><a class="markdownIt-Anchor" href="#bf"></a> BF</h2>
+<p>“打暴力谁不会啊？”</p>
+<p>平均时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(mn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">&#x2F;&#x2F; 暴力匹配
+int i &#x3D; 0, j &#x3D; 0;
+while (i &lt; s.length())
+&#123;
+    if (s[i] &#x3D;&#x3D; p[j])
+        ++i, ++j;
+    else
+        i &#x3D; i - j + 1, j &#x3D; 0;
+    if (j &#x3D;&#x3D; p.length())  &#x2F;&#x2F; 匹配成功
+    &#123;
+        &#x2F;&#x2F; 对s[i - j .. i - 1]进行一些操作
+        cout &lt;&lt; i - j &lt;&lt; endl;
+        i &#x3D; i - j + 1;
+        j &#x3D; 0;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr />
+<h2 id="kmp"><a class="markdownIt-Anchor" href="#kmp"></a> KMP</h2>
+<p>保证主串的指针单调向前，保证了线性时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(m+n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<h5 id="what-pmt的概念"><a class="markdownIt-Anchor" href="#what-pmt的概念"></a> What: PMT的概念</h5>
+<p>PMT数组中的值是字符串的真前缀集合与真后缀集合的交集中最长元素的长度，也是指针j回溯可到达的最近位置！</p>
+<p><code>pmt[i]</code>=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>max</mi><mo>⁡</mo><mi>l</mi><mi>e</mi><mi>n</mi><mi>g</mi><mi>t</mi><mi>h</mi><mo stretchy="false">(</mo></mrow><annotation encoding="application/x-tex">\max length(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mopen">(</span></span></span></span>真前缀<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∩</mo></mrow><annotation encoding="application/x-tex">\cap</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.55556em;vertical-align:0em;"></span><span class="mord">∩</span></span></span></span>真后缀<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mclose">)</span></span></span></span></p>
+<p><img src="https://s2.loli.net/2024/10/16/jozISTcVvJF7xP8.webp" alt="img" /></p>
+<h5 id="待匹配的子串有8个字符那么pmt数组就会有8个值"><a class="markdownIt-Anchor" href="#待匹配的子串有8个字符那么pmt数组就会有8个值"></a> 待匹配的子串有8个字符，那么PMT数组就会有8个值。</h5>
+<p><strong>前缀</strong>：&quot;Hello&quot;的前缀：{“H”,“He”,“Hel”,“Hell”}</p>
+<p><strong>后缀</strong>：&quot;World&quot;的后缀：{“orld”,“rld”,“ld”,“d”}</p>
+<blockquote>
+<p>e.g. “ababa”</p>
+<p>前缀{“abab”,“aba”,“ab”,“a”}</p>
+<p>后缀{“baba”,“aba”,“ba”,“a”}</p>
+<p>前缀<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∩</mo></mrow><annotation encoding="application/x-tex">\cap</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.55556em;vertical-align:0em;"></span><span class="mord">∩</span></span></span></span>后缀={“aba”,“a”}</p>
+<p><code>pmt[5]</code>=<code>maxlength</code>(前缀<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∩</mo></mrow><annotation encoding="application/x-tex">\cap</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.55556em;vertical-align:0em;"></span><span class="mord">∩</span></span></span></span>后缀)=3</p>
+</blockquote>
+<h5 id="why-为什么引入pmt"><a class="markdownIt-Anchor" href="#why-为什么引入pmt"></a> Why: 为什么引入PMT？</h5>
+<p>PMT可以用来确定指针j的位置，防止每次都回溯到开头<code>i=0</code>（i是上排文本串的指针)，造成<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(mn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>的逆天时间复杂度。</p>
+<p><code>pmt[i]</code>就是，从<code>p[0]</code>往后数、同时从<code>p[i]</code>往前数相同的位数，在保证前后缀相同的情况下，最多能数多少位。</p>
+<p><img src="https://s2.loli.net/2024/10/16/kU1qyP5nuBbdcpJ.png" alt="image-20241016210540592" /></p>
+<p>这种情况下，失配，暴力BF的双层循环中，需要<code>i=1</code> ，<code>j=0</code>，重新匹配，十分没有效率！</p>
+<p>KMP中，我们希望上层指针i永远单调增加，不经历回溯。在i不动的情况下，希望j回退至一个合适的位置（等价于移动模式串p），使得<code>ababa</code>的真后缀与<code>ababc</code>的真前缀相匹配，且j能指示匹配位数。</p>
+<p><img src="https://s2.loli.net/2024/10/16/ZTsLihwMGremnPR.png" alt="img" /></p>
+<h6 id="如图abacaba的后缀aba-与-abac的前缀aba相匹配无需再次验证只需验证后面的bc"><a class="markdownIt-Anchor" href="#如图abacaba的后缀aba-与-abac的前缀aba相匹配无需再次验证只需验证后面的bc"></a> 如图，“ABACABA&quot;的后缀&quot;ABA” 与 &quot;ABAC&quot;的前缀&quot;ABA&quot;相匹配，无需再次验证，只需验证后面的B?=C</h6>
+<p>如图，i不动，<code>j=pmt[j-1]=pmt[7-1]=pmt[6]=3</code>。i=7，j=3，B!=C，失配。</p>
+<p><img src="https://s2.loli.net/2024/10/16/2lHuRqjB9hJpVcU.png" alt="img" /></p>
+<p>如图，i不动，继续回溯j，<code>j=pmt[j-1]=pmt[3-1]=pmt[2]=1</code>。i=7，j=1，B==B，匹配！</p>
+<p>i++，j++，发现一直可以匹配到末尾。</p>
+<h5 id="how-用代码求出pmt"><a class="markdownIt-Anchor" href="#how-用代码求出pmt"></a> How: 用代码求出PMT</h5>
+<p>在<strong>错开一位</strong>后，让模式串<code>p</code><strong>自己匹配自己</strong>（这相当于是用<strong>前缀</strong>去匹配<strong>后缀</strong>）。我们知道<code>pmt[0]=0</code>，而之后的每一位则可以通过在匹配过程中记录<code>j</code>值得到。</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">void get_pmt(const string&amp; s) &#123;
+    for (int i &#x3D; 1, j &#x3D; 0; i &lt; s.length(); ++i) &#123;
+        while (j !&#x3D; 0 &amp;&amp; s[i] !&#x3D; s[j]) j &#x3D; pmt[j - 1]; &#x2F;&#x2F;字符失配，指针j回溯
+        if (s[i] &#x3D;&#x3D; s[j]) j++; &#x2F;&#x2F;字符匹配，指针j向前
+        pmt[i] &#x3D; j;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<br/>
+<h2 id="匹配"><a class="markdownIt-Anchor" href="#匹配"></a> 匹配</h2>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">int kmp(const string&amp; s, const string&amp; p) &#123;
+    for (int i &#x3D; 0, j &#x3D; 0; i &lt; s.length(); ++i) &#123;
+      &#x2F;&#x2F;i是目标串指针 j是模式串指针
+        while (j &amp;&amp; s[i] !&#x3D; p[j]) j &#x3D; pmt[j - 1]; &#x2F;&#x2F;字符失配，指针j回溯
+        if (s[i] &#x3D;&#x3D; p[j]) j++; &#x2F;&#x2F;字符匹配，指针j向前
+        if (j &#x3D;&#x3D; p.length()) &#123;
+            return i - j + 2  &#x2F;&#x2F; 首个完全匹配上的位置，i-(j-1)+1,指针j处于已经匹配完的模式串的最后一个字符的下一个
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(m+n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<br/>
+<p>完整代码如下：</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include&lt;iostream&gt;
+using namespace std;
+const int MAXN&#x3D;1e6+5;
+int pmt[MAXN];
+void get_pmt(const string&amp; s) &#123;
+    for (int i &#x3D; 1, j &#x3D; 0; i &lt; s.length(); ++i) &#123;
+        while (j !&#x3D; 0 &amp;&amp; s[i] !&#x3D; s[j]) j &#x3D; pmt[j - 1]; &#x2F;&#x2F;字符失配，指针j回溯
+        if (s[i] &#x3D;&#x3D; s[j]) j++; &#x2F;&#x2F;字符匹配，指针j向前
+        pmt[i] &#x3D; j;
+    &#125;
+&#125;
+int kmp(const string&amp; s, const string&amp; p) &#123;
+    for (int i &#x3D; 0, j &#x3D; 0; i &lt; s.length(); ++i) &#123;
+      &#x2F;&#x2F;i是目标串指针 j是模式串指针
+        while (j &amp;&amp; s[i] !&#x3D; p[j]) j &#x3D; pmt[j - 1]; &#x2F;&#x2F;字符失配，指针j回溯
+        if (s[i] &#x3D;&#x3D; p[j]) j++; &#x2F;&#x2F;字符匹配，指针j向前
+        if (j &#x3D;&#x3D; p.length()) &#123;
+            return i - j + 2; &#x2F;&#x2F; 首个完全匹配上的位置，i-(j-1)+1,指针j处于已经匹配完的模式串的最后一个字符的下一个
+        &#125;
+    &#125;
+&#125;
+int main()
+&#123;
+    string s, p;
+    cin &gt;&gt; s &gt;&gt; p;
+    get_pmt(p);
+    cout&lt;&lt;kmp(s,p)&lt;&lt;endl;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+  
+
+
+          <div class="row mt-2">
+  
+    <div class="eight columns">
+      <p id="madewith">Made with ❤ and
+        <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none;" rel="noreferrer" aria-label="Hexo.io">
+        <svg class="hexo svg-hov" width="14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Hexo.js</title><path d="M12 .007L1.57 6.056V18.05L12 23.995l10.43-6.049V5.952L12 .007zm4.798 17.105l-.939.521-.939-.521V12.94H9.08v4.172l-.94.521-.938-.521V6.89l.939-.521.939.521v4.172h5.84V6.89l.94-.521.938.521v10.222z"/></svg>
+        </a>
+        
+        at <a href="https://en.wikipedia.org/wiki/Moon" target="_blank" rel="noreferrer">Moon</a>.</p>
+        
+    </div>
+
+    <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+    <div class="four columns mb-3 posisi" >
+      
+      <a class="ml-0 footer-link icon" href="https://github.com/igloomatics" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="GitHub">
+        <svg class="github svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      
+
+      
+
+      
+
+      
+
+    </div>
+  
+</div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <script src="/js/nanobar.min.js"></script>
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
+</body>
+
+</html>
