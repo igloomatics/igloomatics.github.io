@@ -230,7 +230,7 @@
 <h4 id="1线性存储结构"><a class="markdownIt-Anchor" href="#1线性存储结构"></a> 1.线性存储结构</h4>
 <p>顺序存储结构，</p>
 <p>每个结点：[data,parent]</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">struct PNode&#123;
+<pre class="line-numbers language-Cpp" data-language="Cpp"><code class="language-Cpp">struct PNode&#123;
   char data;
   int parent;
   PNode(char d,int p)&#123;
@@ -240,7 +240,7 @@
 &#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="2链式存储结构"><a class="markdownIt-Anchor" href="#2链式存储结构"></a> 2.链式存储结构</h4>
 <p>每个结点：[data，指向所有孩子结点的指针]</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">struct SonNode&#123;
+<pre class="line-numbers language-Cpp" data-language="Cpp"><code class="language-Cpp">struct SonNode&#123;
   char data;
   vectir&lt;SonNode* &gt;sons;
   SonNode()&#123;&#125;
