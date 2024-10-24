@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+
+  
+  <title>线性表</title>
+  
+  <link rel="canonical" href="http://example.com/2024/09/18/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E7%BA%BF%E6%80%A7%E8%A1%A8/">
+  
+  <meta name="description" content="\mbox{线性表}\begin{cases} \mbox{顺序表}\\ \mbox{链表} \end{cases}   线性表：逻辑结构， 就是对外暴露数据之间的关系，不关心底层如何实现。顺序表、链表都是一种线性表。  数据元素类型相同 有限个数据元素 每个数据元素有唯一序号   顺序表、链表：物">
+  
+  
+  <meta name="author" content="Igloos">
+  
+  <meta property="og:image" content="http://example.comundefined">
+  
+  <meta property="og:site_name" content="Igloos" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="线性表" />
+  
+  <meta property="og:description" content="\mbox{线性表}\begin{cases} \mbox{顺序表}\\ \mbox{链表} \end{cases}   线性表：逻辑结构， 就是对外暴露数据之间的关系，不关心底层如何实现。顺序表、链表都是一种线性表。  数据元素类型相同 有限个数据元素 每个数据元素有唯一序号   顺序表、链表：物">
+  
+  <meta property="og:url" content="http://example.com/2024/09/18/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E7%BA%BF%E6%80%A7%E8%A1%A8/" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="线性表">
+  
+  <meta name="twitter:description" content="\mbox{线性表}\begin{cases} \mbox{顺序表}\\ \mbox{链表} \end{cases}   线性表：逻辑结构， 就是对外暴露数据之间的关系，不关心底层如何实现。顺序表、链表都是一种线性表。  数据元素类型相同 有限个数据元素 每个数据元素有唯一序号   顺序表、链表：物">
+  
+  
+  <meta name="twitter:image" content="http://example.comundefined">
+  
+  <meta name="twitter:url" content="http://example.com/2024/09/18/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E7%BA%BF%E6%80%A7%E8%A1%A8/" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Preload fonts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preload" href="../fonts/dm-serif-display-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/inter-v2-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+<link rel="stylesheet" href="/css/normalize.css">
+
+  
+<link rel="stylesheet" href="/css/skeleton.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+<link rel="stylesheet" href="/css/prism-dark.css">
+
+  
+<link rel="stylesheet" href="/css/prism-line-numbers.css">
+
+  <!-- User css -->
+  
+  
+<link rel="stylesheet" href="/css/user.css">
+
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #6D9DC5;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #6D9DC5 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #6D9DC5;
+  }
+  .nanobar .bar {
+    background: #6D9DC5;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #6D9DC5;
+    border-color: #6D9DC5;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #6D9DC5;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="two columns" style="max-width: 50px">
+    <h1 class="mt-2 mode">
+      <div onclick=setDarkMode(true) id="darkBtn">🌑</div>
+      <div onclick=setDarkMode(false) id="lightBtn" class=hidden>🌕</div>
+      <script >
+        if (localStorage.getItem('preferredTheme') == 'dark') {
+          setDarkMode(true)
+        }
+        function setDarkMode(isDark) {
+          var darkBtn = document.getElementById('darkBtn')
+          var lightBtn = document.getElementById('lightBtn')
+          if (isDark) {
+            lightBtn.style.display = "block"
+            darkBtn.style.display = "none"
+            localStorage.setItem('preferredTheme', 'dark');
+          } else {
+            lightBtn.style.display = "none"
+            darkBtn.style.display = "block"
+            localStorage.removeItem('preferredTheme');
+          }
+          document.body.classList.toggle("darkmode");
+        }
+      </script>
+    </h1>
+  </div>
+
+  <div class="six columns ml-1">
+    <h1 class="mt-2">
+      Igloos
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">Home</a>
+        
+          
+          <a href="/tags" class="ml">Tags</a>
+          
+        
+          
+          <a href="/mutter" class="ml">Mutter</a>
+          
+        
+          
+          <a href="/links" class="ml">Links</a>
+          
+        
+          
+          <a href="/about" class="ml">About</a>
+          
+        
+        
+      </div>
+    </div>
+    <hr style="margin-bottom: 2.6rem">
+  </div>
+  
+</div>
+        <div class="trans">
+            <h2>线性表</h2>
+
+  <p><a class="classtest-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a> — Sep 18, 2024</p> 
+  \mbox{线性表}\begin{cases}
+\mbox{顺序表}\\
+\mbox{链表}
+\end{cases}
+
+<ul>
+<li>线性表：<strong>逻辑结构</strong>， 就是对外暴露数据之间的关系，不关心底层如何实现。顺序表、链表都是一种线性表。
+<ul>
+<li>数据元素类型相同</li>
+<li>有限个数据元素</li>
+<li>每个数据元素有唯一序号</li>
+</ul>
+</li>
+<li>顺序表、链表：<strong>物理结构</strong>，他是实现一个结构实际物理内存上的结构。比如顺序表就是用<strong>数组</strong>实现。而链表主要用<strong>指针</strong>完成工作。不同的结构在不同的场景有不同的区别。</li>
+</ul>
+<hr />
+<h2 id="顺序表"><a class="markdownIt-Anchor" href="#顺序表"></a> 顺序表</h2>
+<p>读表易，插表难</p>
+<p>Q: 数组和顺序表有什么区别</p>
+<p>A: 顺序表是一种线性数据结构，而数组是各种编程语言中的基本数据类型，顺序表的底层实现通常也是基于数组，但与数组不同的是，数组的长度固定，顺序表的长度是可变的，可以根据需要动态扩展和缩减。</p>
+<p>初学者可以把顺序表简单视为<strong>可变长度的数组</strong>。</p>
+<h4 id="建立顺序表"><a class="markdownIt-Anchor" href="#建立顺序表"></a> 建立顺序表</h4>
+<p>依次将a中的元素添加到data数组的末尾</p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">void CreateList(T a[],int n) &#x2F;&#x2F;由数组a中元素整体建立顺序表
+&#123;
+	for (int i&#x3D;0;i&lt;n;i++)
+	&#123; if (length&lt;capacity) &#x2F;&#x2F;容量不够时
+			recap(2*length); &#x2F;&#x2F;扩大容量
+			data[length]&#x3D;a[i];
+			length++; &#x2F;&#x2F;添加后元素个数增加1
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr />
+<h2 id="链表"><a class="markdownIt-Anchor" href="#链表"></a> 链表</h2>
+<p>读表难，插表易</p>
+<p>结点包含(元素值，前继，后继)</p>
+<p><strong>单链表</strong>：每个结点只设置一个指向其<strong>后继</strong>的指针</p>
+<p><img src="https://s2.loli.net/2024/09/18/LI8bGWrOC2fd9UD.png" alt="image-20240918110847561" /></p>
+<p><strong>双链表</strong>：每个结点分别设置指针指向其<strong>前继</strong>和<strong>后继</strong></p>
+<p><img src="https://s2.loli.net/2024/09/18/zwWnNPdVqaKGmbo.png" alt="image-20240918110905082" /></p>
+<h3 id="单链表"><a class="markdownIt-Anchor" href="#单链表"></a> 单链表</h3>
+<p>每个节点是LinkNode类型</p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">struct LinkNode &#x2F;&#x2F;单链表结点类型
+&#123; int data; &#x2F;&#x2F;存放数据元素
+	LinkNode&lt;int&gt;* next; &#x2F;&#x2F;下一个结点的指针
+	LinkNode():next(NULL) &#123;&#125; &#x2F;&#x2F;构造函数
+	LinkNode(int d):data(d),next(NULL) &#123;&#125; &#x2F;&#x2F;重载构造函数
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>每个单链表是LinkList</p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">class LinkList &#x2F;&#x2F;单链表类模板
+&#123;
+	public:
+		LinkNode&lt;T&gt;* head; &#x2F;&#x2F;单链表头结点
+&#x2F;&#x2F;基本运算算法
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="插入结点"><a class="markdownIt-Anchor" href="#插入结点"></a> 插入结点</h4>
+<p><img src="https://s2.loli.net/2024/09/18/IKHBC6Weluf1Liz.png" alt="image-20240918111939371" /></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">s<span class="token operator">-></span>next <span class="token operator">=</span> p<span class="token operator">-></span>next
+p<span class="token operator">-></span>next <span class="token operator">=</span> s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="删除结点"><a class="markdownIt-Anchor" href="#删除结点"></a> 删除结点</h4>
+<p><img src="https://s2.loli.net/2024/09/18/FbgONaYSP4VyQMK.png" alt="image-20240918112048769" /></p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">q &#x3D; p-&gt;next
+p-&gt;next &#x3D; q-&gt;next<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="建立单链表"><a class="markdownIt-Anchor" href="#建立单链表"></a> 建立单链表</h4>
+<p>头插法</p>
+<img src="https://s2.loli.net/2024/09/18/Rs6LijYGupHvQ1N.jpg" alt="img" style="zoom:80%;" />
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">void CreateListF(T a[],int n) &#123; &#x2F;&#x2F;头插法建立单链表
+for (int i&#x3D;0;i&lt;n;i++) &#x2F;&#x2F;循环建立数据结点
+		&#123; LinkNode&lt;T&gt;* s&#x3D;new LinkNode&lt;T&gt;(a[i]);&#x2F;&#x2F;创建数据结点s
+		s-&gt;next&#x3D;head-&gt;next; &#x2F;&#x2F;将结点s插入head结点之后
+		head-&gt;next&#x3D;s;
+		&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>尾插法</p>
+<img src="https://s2.loli.net/2024/09/18/o3zMl6mtrCv4P8Z.jpg" alt="img" style="zoom:80%;" />
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">void CreateListR(T a[],int n) &#123; &#x2F;&#x2F;尾插法建立单链表
+	LinkNode&lt;T&gt;* s,*r;
+	r&#x3D;head; &#x2F;&#x2F;r指向尾结点,开始时指向头结点
+	for (int i&#x3D;0;i&lt;n;i++)&#123; &#x2F;&#x2F;循环建立数据结点
+		s&#x3D;new LinkNode&lt;T&gt;(a[i]); &#x2F;&#x2F;创建数据结点s
+		r-&gt;next&#x3D;s; &#x2F;&#x2F;将结点s插入结点r之后
+		r&#x3D;s;
+	&#125;
+	r-&gt;next&#x3D;NULL; &#x2F;&#x2F;将尾结点的next域置为NULL
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+  
+
+
+          <div class="row mt-2">
+  
+    <div class="eight columns">
+      <p id="madewith">Made with ❤ and
+        <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none;" rel="noreferrer" aria-label="Hexo.io">
+        <svg class="hexo svg-hov" width="14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Hexo.js</title><path d="M12 .007L1.57 6.056V18.05L12 23.995l10.43-6.049V5.952L12 .007zm4.798 17.105l-.939.521-.939-.521V12.94H9.08v4.172l-.94.521-.938-.521V6.89l.939-.521.939.521v4.172h5.84V6.89l.94-.521.938.521v10.222z"/></svg>
+        </a>
+        
+        at <a href="https://en.wikipedia.org/wiki/Moon" target="_blank" rel="noreferrer">Moon</a>.</p>
+        
+    </div>
+
+    <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+    <div class="four columns mb-3 posisi" >
+      
+      <a class="ml-0 footer-link icon" href="https://github.com/igloomatics" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="GitHub">
+        <svg class="github svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      
+
+      
+
+      
+
+      
+
+    </div>
+  
+</div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <script src="/js/nanobar.min.js"></script>
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
+</body>
+
+</html>

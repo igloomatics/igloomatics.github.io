@@ -11,11 +11,11 @@
   <meta charset="utf-8">
 
   
-  <title>线性表</title>
+  <title>二叉树性质、存储结构</title>
   
-  <link rel="canonical" href="http://example.com/2024/09/18/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E7%BA%BF%E6%80%A7%E8%A1%A8/">
+  <link rel="canonical" href="http://example.com/2024/10/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%A7%E8%B4%A8%E4%B8%8E%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/">
   
-  <meta name="description" content="\mbox{线性表}\begin{cases} \mbox{顺序表}\\ \mbox{链表} \end{cases}   线性表：逻辑结构， 就是对外暴露数据之间的关系，不关心底层如何实现。顺序表、链表都是一种线性表。  数据元素类型相同 有限个数据元素 每个数据元素有唯一序号   顺序表、链表：物">
+  <meta name="description" content="二叉树的性质 二叉树的存储结构  顺序存储结构 链式存储结构   二叉树的基本运算  创建二叉树 求括号表示串 查找值为x的结点 求高度Height( ) 销毁二叉树      二叉树的性质  Sum(结点数) = Sum(分支数)+1 度为m的树的第i层上最多有mi−1m^{i-1}mi−1个结点">
   
   
   <meta name="author" content="Igloos">
@@ -24,21 +24,21 @@
   
   <meta property="og:site_name" content="Igloos" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="线性表" />
+  <meta property="og:title" content="二叉树性质、存储结构" />
   
-  <meta property="og:description" content="\mbox{线性表}\begin{cases} \mbox{顺序表}\\ \mbox{链表} \end{cases}   线性表：逻辑结构， 就是对外暴露数据之间的关系，不关心底层如何实现。顺序表、链表都是一种线性表。  数据元素类型相同 有限个数据元素 每个数据元素有唯一序号   顺序表、链表：物">
+  <meta property="og:description" content="二叉树的性质 二叉树的存储结构  顺序存储结构 链式存储结构   二叉树的基本运算  创建二叉树 求括号表示串 查找值为x的结点 求高度Height( ) 销毁二叉树      二叉树的性质  Sum(结点数) = Sum(分支数)+1 度为m的树的第i层上最多有mi−1m^{i-1}mi−1个结点">
   
-  <meta property="og:url" content="http://example.com/2024/09/18/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E7%BA%BF%E6%80%A7%E8%A1%A8/" />
+  <meta property="og:url" content="http://example.com/2024/10/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%A7%E8%B4%A8%E4%B8%8E%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/" />
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="线性表">
+  <meta name="twitter:title" content="二叉树性质、存储结构">
   
-  <meta name="twitter:description" content="\mbox{线性表}\begin{cases} \mbox{顺序表}\\ \mbox{链表} \end{cases}   线性表：逻辑结构， 就是对外暴露数据之间的关系，不关心底层如何实现。顺序表、链表都是一种线性表。  数据元素类型相同 有限个数据元素 每个数据元素有唯一序号   顺序表、链表：物">
+  <meta name="twitter:description" content="二叉树的性质 二叉树的存储结构  顺序存储结构 链式存储结构   二叉树的基本运算  创建二叉树 求括号表示串 查找值为x的结点 求高度Height( ) 销毁二叉树      二叉树的性质  Sum(结点数) = Sum(分支数)+1 度为m的树的第i层上最多有mi−1m^{i-1}mi−1个结点">
   
   
   <meta name="twitter:image" content="http://example.comundefined">
   
-  <meta name="twitter:url" content="http://example.com/2024/09/18/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E7%BA%BF%E6%80%A7%E8%A1%A8/" />
+  <meta name="twitter:url" content="http://example.com/2024/10/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%A7%E8%B4%A8%E4%B8%8E%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/" />
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -197,94 +197,54 @@
   
 </div>
         <div class="trans">
-            <h2>线性表</h2>
+            <h2>二叉树性质、存储结构</h2>
 
-  <p><a class="classtest-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a> — Sep 18, 2024</p> 
-  \mbox{线性表}\begin{cases}
-\mbox{顺序表}\\
-\mbox{链表}
-\end{cases}
-
+  <p><a class="classtest-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a> — Oct 23, 2024</p> 
+  <ul>
+<li>二叉树的性质</li>
+<li>二叉树的存储结构
 <ul>
-<li>线性表：<strong>逻辑结构</strong>， 就是对外暴露数据之间的关系，不关心底层如何实现。顺序表、链表都是一种线性表。
-<ul>
-<li>数据元素类型相同</li>
-<li>有限个数据元素</li>
-<li>每个数据元素有唯一序号</li>
+<li>顺序存储结构</li>
+<li>链式存储结构</li>
 </ul>
 </li>
-<li>顺序表、链表：<strong>物理结构</strong>，他是实现一个结构实际物理内存上的结构。比如顺序表就是用<strong>数组</strong>实现。而链表主要用<strong>指针</strong>完成工作。不同的结构在不同的场景有不同的区别。</li>
+<li>二叉树的基本运算
+<ul>
+<li>创建二叉树</li>
+<li>求括号表示串</li>
+<li>查找值为x的结点</li>
+<li>求高度Height( )</li>
+<li>销毁二叉树</li>
+</ul>
+</li>
 </ul>
 <hr />
-<h2 id="顺序表"><a class="markdownIt-Anchor" href="#顺序表"></a> 顺序表</h2>
-<p>读表易，插表难</p>
-<p>Q: 数组和顺序表有什么区别</p>
-<p>A: 顺序表是一种线性数据结构，而数组是各种编程语言中的基本数据类型，顺序表的底层实现通常也是基于数组，但与数组不同的是，数组的长度固定，顺序表的长度是可变的，可以根据需要动态扩展和缩减。</p>
-<p>初学者可以把顺序表简单视为<strong>可变长度的数组</strong>。</p>
-<h4 id="建立顺序表"><a class="markdownIt-Anchor" href="#建立顺序表"></a> 建立顺序表</h4>
-<p>依次将a中的元素添加到data数组的末尾</p>
-<pre class="line-numbers language-C" data-language="C"><code class="language-C">void CreateList(T a[],int n) &#x2F;&#x2F;由数组a中元素整体建立顺序表
-&#123;
-	for (int i&#x3D;0;i&lt;n;i++)
-	&#123; if (length&lt;capacity) &#x2F;&#x2F;容量不够时
-			recap(2*length); &#x2F;&#x2F;扩大容量
-			data[length]&#x3D;a[i];
-			length++; &#x2F;&#x2F;添加后元素个数增加1
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="二叉树的性质"><a class="markdownIt-Anchor" href="#二叉树的性质"></a> 二叉树的性质</h3>
+<ol>
+<li>Sum(结点数) = Sum(分支数)+1</li>
+<li>度为m的树的第i层上最多有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>m</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">m^{i-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.824664em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>个结点。若高度为h，则整棵树最多有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><msup><mi>m</mi><mi>h</mi></msup><mo>−</mo><mn>1</mn></mrow><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{m^h-1}{m-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.4462509999999997em;vertical-align:-0.403331em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0429199999999998em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9270285714285713em;"><span style="top:-2.931em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">h</span></span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.403331em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>个结点</li>
+</ol>
 <hr />
-<h2 id="链表"><a class="markdownIt-Anchor" href="#链表"></a> 链表</h2>
-<p>读表难，插表易</p>
-<p>结点包含(元素值，前继，后继)</p>
-<p><strong>单链表</strong>：每个结点只设置一个指向其<strong>后继</strong>的指针</p>
-<p><img src="https://s2.loli.net/2024/09/18/LI8bGWrOC2fd9UD.png" alt="image-20240918110847561" /></p>
-<p><strong>双链表</strong>：每个结点分别设置指针指向其<strong>前继</strong>和<strong>后继</strong></p>
-<p><img src="https://s2.loli.net/2024/09/18/zwWnNPdVqaKGmbo.png" alt="image-20240918110905082" /></p>
-<h3 id="单链表"><a class="markdownIt-Anchor" href="#单链表"></a> 单链表</h3>
-<p>每个节点是LinkNode类型</p>
-<pre class="line-numbers language-C" data-language="C"><code class="language-C">struct LinkNode &#x2F;&#x2F;单链表结点类型
-&#123; int data; &#x2F;&#x2F;存放数据元素
-	LinkNode&lt;int&gt;* next; &#x2F;&#x2F;下一个结点的指针
-	LinkNode():next(NULL) &#123;&#125; &#x2F;&#x2F;构造函数
-	LinkNode(int d):data(d),next(NULL) &#123;&#125; &#x2F;&#x2F;重载构造函数
+<h3 id="二叉树顶点存储结构"><a class="markdownIt-Anchor" href="#二叉树顶点存储结构"></a> 二叉树顶点存储结构</h3>
+<h4 id="1线性存储结构"><a class="markdownIt-Anchor" href="#1线性存储结构"></a> 1.线性存储结构</h4>
+<p>顺序存储结构，</p>
+<p>每个结点：[data,parent]</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">struct PNode&#123;
+  char data;
+  int parent;
+  PNode(char d,int p)&#123;
+    data&#x3D;d;
+    parent&#x3D;p;
+  &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2链式存储结构"><a class="markdownIt-Anchor" href="#2链式存储结构"></a> 2.链式存储结构</h4>
+<p>每个结点：[data，指向所有孩子结点的指针]</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">struct SonNode&#123;
+  char data;
+  vectir&lt;SonNode* &gt;sons;
+  SonNode()&#123;&#125;
+  SonNode(char d):data(d)&#123;&#125;
 &#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>每个单链表是LinkList</p>
-<pre class="line-numbers language-C" data-language="C"><code class="language-C">class LinkList &#x2F;&#x2F;单链表类模板
-&#123;
-	public:
-		LinkNode&lt;T&gt;* head; &#x2F;&#x2F;单链表头结点
-&#x2F;&#x2F;基本运算算法
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="插入结点"><a class="markdownIt-Anchor" href="#插入结点"></a> 插入结点</h4>
-<p><img src="https://s2.loli.net/2024/09/18/IKHBC6Weluf1Liz.png" alt="image-20240918111939371" /></p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">s<span class="token operator">-></span>next <span class="token operator">=</span> p<span class="token operator">-></span>next
-p<span class="token operator">-></span>next <span class="token operator">=</span> s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="删除结点"><a class="markdownIt-Anchor" href="#删除结点"></a> 删除结点</h4>
-<p><img src="https://s2.loli.net/2024/09/18/FbgONaYSP4VyQMK.png" alt="image-20240918112048769" /></p>
-<pre class="line-numbers language-C" data-language="C"><code class="language-C">q &#x3D; p-&gt;next
-p-&gt;next &#x3D; q-&gt;next<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="建立单链表"><a class="markdownIt-Anchor" href="#建立单链表"></a> 建立单链表</h4>
-<p>头插法</p>
-<img src="https://s2.loli.net/2024/09/18/Rs6LijYGupHvQ1N.jpg" alt="img" style="zoom:80%;" />
-<pre class="line-numbers language-C" data-language="C"><code class="language-C">void CreateListF(T a[],int n) &#123; &#x2F;&#x2F;头插法建立单链表
-for (int i&#x3D;0;i&lt;n;i++) &#x2F;&#x2F;循环建立数据结点
-		&#123; LinkNode&lt;T&gt;* s&#x3D;new LinkNode&lt;T&gt;(a[i]);&#x2F;&#x2F;创建数据结点s
-		s-&gt;next&#x3D;head-&gt;next; &#x2F;&#x2F;将结点s插入head结点之后
-		head-&gt;next&#x3D;s;
-		&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>尾插法</p>
-<img src="https://s2.loli.net/2024/09/18/o3zMl6mtrCv4P8Z.jpg" alt="img" style="zoom:80%;" />
-<pre class="line-numbers language-C" data-language="C"><code class="language-C">void CreateListR(T a[],int n) &#123; &#x2F;&#x2F;尾插法建立单链表
-	LinkNode&lt;T&gt;* s,*r;
-	r&#x3D;head; &#x2F;&#x2F;r指向尾结点,开始时指向头结点
-	for (int i&#x3D;0;i&lt;n;i++)&#123; &#x2F;&#x2F;循环建立数据结点
-		s&#x3D;new LinkNode&lt;T&gt;(a[i]); &#x2F;&#x2F;创建数据结点s
-		r-&gt;next&#x3D;s; &#x2F;&#x2F;将结点s插入结点r之后
-		r&#x3D;s;
-	&#125;
-	r-&gt;next&#x3D;NULL; &#x2F;&#x2F;将尾结点的next域置为NULL
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
   
 

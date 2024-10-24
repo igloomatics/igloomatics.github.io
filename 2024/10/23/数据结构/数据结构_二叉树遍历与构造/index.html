@@ -11,11 +11,11 @@
   <meta charset="utf-8">
 
   
-  <title>集成学习</title>
+  <title>二叉树遍历与构造</title>
   
-  <link rel="canonical" href="http://example.com/2024/10/22/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0_%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/">
+  <link rel="canonical" href="http://example.com/2024/10/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E4%B8%8E%E6%9E%84%E9%80%A0/">
   
-  <meta name="description" content="集成学习的类型   Boosting迭代提升法   [错题本]  从弱分类器开始加强，通过加权进行训练。 循环训练个体学习器，每个后继学习器都对其前驱学习器做出一点改进   AdaBoost GBDT XGBoost    Bagging自助聚合法 对多个分类器取平均  随机森林    Stacki">
+  <meta name="description" content="先序/中序/后续遍历  递归算法 非递归算法    层次遍历   二叉树构造  查找 插入/删除 遍历  先根遍历 后根遍历 层次遍历        树的性质  Sum(结点数) = Sum(分支数)+1 度为m的树的第i层上最多有mi−1m^{i-1}mi−1个结点。若高度为h，则整棵树最多有mh">
   
   
   <meta name="author" content="Igloos">
@@ -24,21 +24,21 @@
   
   <meta property="og:site_name" content="Igloos" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="集成学习" />
+  <meta property="og:title" content="二叉树遍历与构造" />
   
-  <meta property="og:description" content="集成学习的类型   Boosting迭代提升法   [错题本]  从弱分类器开始加强，通过加权进行训练。 循环训练个体学习器，每个后继学习器都对其前驱学习器做出一点改进   AdaBoost GBDT XGBoost    Bagging自助聚合法 对多个分类器取平均  随机森林    Stacki">
+  <meta property="og:description" content="先序/中序/后续遍历  递归算法 非递归算法    层次遍历   二叉树构造  查找 插入/删除 遍历  先根遍历 后根遍历 层次遍历        树的性质  Sum(结点数) = Sum(分支数)+1 度为m的树的第i层上最多有mi−1m^{i-1}mi−1个结点。若高度为h，则整棵树最多有mh">
   
-  <meta property="og:url" content="http://example.com/2024/10/22/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0_%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/" />
+  <meta property="og:url" content="http://example.com/2024/10/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E4%B8%8E%E6%9E%84%E9%80%A0/" />
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="集成学习">
+  <meta name="twitter:title" content="二叉树遍历与构造">
   
-  <meta name="twitter:description" content="集成学习的类型   Boosting迭代提升法   [错题本]  从弱分类器开始加强，通过加权进行训练。 循环训练个体学习器，每个后继学习器都对其前驱学习器做出一点改进   AdaBoost GBDT XGBoost    Bagging自助聚合法 对多个分类器取平均  随机森林    Stacki">
+  <meta name="twitter:description" content="先序/中序/后续遍历  递归算法 非递归算法    层次遍历   二叉树构造  查找 插入/删除 遍历  先根遍历 后根遍历 层次遍历        树的性质  Sum(结点数) = Sum(分支数)+1 度为m的树的第i层上最多有mi−1m^{i-1}mi−1个结点。若高度为h，则整棵树最多有mh">
   
   
   <meta name="twitter:image" content="http://example.comundefined">
   
-  <meta name="twitter:url" content="http://example.com/2024/10/22/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0_%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/" />
+  <meta name="twitter:url" content="http://example.com/2024/10/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E4%B8%8E%E6%9E%84%E9%80%A0/" />
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -197,36 +197,82 @@
   
 </div>
         <div class="trans">
-            <h2>集成学习</h2>
+            <h2>二叉树遍历与构造</h2>
 
-  <p><a class="classtest-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a> — Oct 22, 2024</p> 
-  <h3 id="集成学习的类型"><a class="markdownIt-Anchor" href="#集成学习的类型"></a> 集成学习的类型</h3>
-<ul>
+  <p><a class="classtest-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a> — Oct 23, 2024</p> 
+  <ul>
 <li>
-<p><strong>Boosting迭代提升法</strong>   [错题本]</p>
-<blockquote>
-<p>从弱分类器开始加强，通过加权进行训练。</p>
-<p>循环训练个体学习器，每个后继学习器都对其前驱学习器做出一点改进</p>
-</blockquote>
+<p>先序/中序/后续遍历</p>
 <ul>
-<li>AdaBoost</li>
-<li>GBDT</li>
-<li>XGBoost</li>
+<li>递归算法</li>
+<li>非递归算法</li>
 </ul>
 </li>
 <li>
-<p><strong>Bagging自助聚合法</strong> 对多个分类器取平均</p>
-<ul>
-<li>随机森林</li>
-</ul>
+<p>层次遍历</p>
 </li>
 <li>
-<p><strong>Stacking</strong> 聚合多个分类或回归模型</p>
+<p>二叉树构造</p>
+<ul>
+<li>查找</li>
+<li>插入/删除</li>
+<li>遍历
+<ul>
+<li>先根遍历</li>
+<li>后根遍历</li>
+<li>层次遍历</li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 <hr />
-<h3 id="boosting-adaboost"><a class="markdownIt-Anchor" href="#boosting-adaboost"></a> Boosting: AdaBoost</h3>
-<p><img src="https://s2.loli.net/2024/10/24/iQlVpSYWIZUH2Ng.png" alt="【VJ算法】VJ算法 之 Adaboost_adaboost算法图解-CSDN博客" /></p>
+<h3 id="树的性质"><a class="markdownIt-Anchor" href="#树的性质"></a> 树的性质</h3>
+<ol>
+<li>Sum(结点数) = Sum(分支数)+1</li>
+<li>度为m的树的第i层上最多有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>m</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">m^{i-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.824664em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>个结点。若高度为h，则整棵树最多有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><msup><mi>m</mi><mi>h</mi></msup><mo>−</mo><mn>1</mn></mrow><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{m^h-1}{m-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.4462509999999997em;vertical-align:-0.403331em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0429199999999998em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9270285714285713em;"><span style="top:-2.931em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">h</span></span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.403331em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>个结点</li>
+</ol>
+<hr />
+<h3 id="树顶点存储结构"><a class="markdownIt-Anchor" href="#树顶点存储结构"></a> 树顶点存储结构</h3>
+<h4 id="1双亲存储结构"><a class="markdownIt-Anchor" href="#1双亲存储结构"></a> 1.双亲存储结构</h4>
+<p>顺序存储结构，</p>
+<p>每个结点：[data,parent]</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">struct PNode&#123;
+  char data;
+  int parent;
+  PNode(char d,int p)&#123;
+    data&#x3D;d;
+    parent&#x3D;p;
+  &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2孩子链存储结构"><a class="markdownIt-Anchor" href="#2孩子链存储结构"></a> 2.孩子链存储结构</h4>
+<p>每个结点：[data，指向所有孩子结点的指针]</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">struct SonNode&#123;
+  char data;
+  vectir&lt;SonNode* &gt;sons;
+  SonNode()&#123;&#125;
+  SonNode(char d):data(d)&#123;&#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3长子兄弟链存储结构"><a class="markdownIt-Anchor" href="#3长子兄弟链存储结构"></a> 3.长子兄弟链存储结构</h3>
+<p>每个结点：[data，指向长子的指针，指向下一个兄弟的指针]</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">struct EBNode&#123;
+  char data;
+  EBNode* brother;
+  EBNode* eson;
+  EBNode():brother(NULL),eson(NULL)&#123;&#125;
+  EBNode(char d)&#123;
+    data&#x3D;d;
+    brother&#x3D;eson&#x3D;NULL;
+  &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr />
+<h3 id="树的基本运算"><a class="markdownIt-Anchor" href="#树的基本运算"></a> 树的基本运算</h3>
+<h4 id="树的遍历"><a class="markdownIt-Anchor" href="#树的遍历"></a> 树的遍历</h4>
+<ol>
+<li>先根遍历</li>
+<li>后根遍历</li>
+<li>层次遍历</li>
+</ol>
 
   
 
