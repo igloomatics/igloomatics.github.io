@@ -196,7 +196,7 @@
   </div>
   
 </div>
-<link rel="stylesheet" href="/js/prism/prism-dark.css">
+<link rel="stylesheet" href="/css/prism-dark.css">
         <div class="trans">
             <h2>串的模式匹配</h2>
 
@@ -211,22 +211,22 @@
 <h2 id="bf"><a class="markdownIt-Anchor" href="#bf"></a> BF</h2>
 <p>“打暴力谁不会啊？”</p>
 <p>平均时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(mn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">&#x2F;&#x2F; 暴力匹配
-int i &#x3D; 0, j &#x3D; 0;
-while (i &lt; s.length())
-&#123;
-    if (s[i] &#x3D;&#x3D; p[j])
-        ++i, ++j;
-    else
-        i &#x3D; i - j + 1, j &#x3D; 0;
-    if (j &#x3D;&#x3D; p.length())  &#x2F;&#x2F; 匹配成功
-    &#123;
-        &#x2F;&#x2F; 对s[i - j .. i - 1]进行一些操作
-        cout &lt;&lt; i - j &lt;&lt; endl;
-        i &#x3D; i - j + 1;
-        j &#x3D; 0;
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// 暴力匹配</span>
+<span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> p<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token operator">++</span>i<span class="token punctuation">,</span> <span class="token operator">++</span>j<span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+        i <span class="token operator">=</span> i <span class="token operator">-</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> p<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// 匹配成功</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 对s[i - j .. i - 1]进行一些操作</span>
+        cout <span class="token operator">&lt;&lt;</span> i <span class="token operator">-</span> j <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+        i <span class="token operator">=</span> i <span class="token operator">-</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr />
 <h2 id="kmp"><a class="markdownIt-Anchor" href="#kmp"></a> KMP</h2>
 <p>保证主串的指针单调向前，保证了线性时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(m+n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
@@ -258,57 +258,57 @@ while (i &lt; s.length())
 <p>i++，j++，发现一直可以匹配到末尾。</p>
 <h5 id="how-用代码求出pmt"><a class="markdownIt-Anchor" href="#how-用代码求出pmt"></a> How: 用代码求出PMT</h5>
 <p>在<strong>错开一位</strong>后，让模式串<code>p</code><strong>自己匹配自己</strong>（这相当于是用<strong>前缀</strong>去匹配<strong>后缀</strong>）。我们知道<code>pmt[0]=0</code>，而之后的每一位则可以通过在匹配过程中记录<code>j</code>值得到。</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">void get_pmt(const string&amp; s) &#123;
-    for (int i &#x3D; 1, j &#x3D; 0; i &lt; s.length(); ++i) &#123;
-        while (j !&#x3D; 0 &amp;&amp; s[i] !&#x3D; s[j]) j &#x3D; pmt[j - 1]; &#x2F;&#x2F;字符失配，指针j回溯
-        if (s[i] &#x3D;&#x3D; s[j]) j++; &#x2F;&#x2F;字符匹配，指针j向前
-        pmt[i] &#x3D; j;
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">get_pmt</span><span class="token punctuation">(</span><span class="token keyword">const</span> string<span class="token operator">&amp;</span> s<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> j <span class="token operator">=</span> pmt<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//字符失配，指针j回溯</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> j<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">//字符匹配，指针j向前</span>
+        pmt<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> j<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <br/>
 <h2 id="匹配"><a class="markdownIt-Anchor" href="#匹配"></a> 匹配</h2>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">int kmp(const string&amp; s, const string&amp; p) &#123;
-    for (int i &#x3D; 0, j &#x3D; 0; i &lt; s.length(); ++i) &#123;
-      &#x2F;&#x2F;i是目标串指针 j是模式串指针
-        while (j &amp;&amp; s[i] !&#x3D; p[j]) j &#x3D; pmt[j - 1]; &#x2F;&#x2F;字符失配，指针j回溯
-        if (s[i] &#x3D;&#x3D; p[j]) j++; &#x2F;&#x2F;字符匹配，指针j向前
-        if (j &#x3D;&#x3D; p.length()) &#123;
-            return i - j + 2  &#x2F;&#x2F; 首个完全匹配上的位置，i-(j-1)+1,指针j处于已经匹配完的模式串的最后一个字符的下一个
-        &#125;
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">kmp</span><span class="token punctuation">(</span><span class="token keyword">const</span> string<span class="token operator">&amp;</span> s<span class="token punctuation">,</span> <span class="token keyword">const</span> string<span class="token operator">&amp;</span> p<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token comment">//i是目标串指针 j是模式串指针</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> p<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> j <span class="token operator">=</span> pmt<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//字符失配，指针j回溯</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> p<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> j<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">//字符匹配，指针j向前</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> p<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> i <span class="token operator">-</span> j <span class="token operator">+</span> <span class="token number">2</span>  <span class="token comment">// 首个完全匹配上的位置，i-(j-1)+1,指针j处于已经匹配完的模式串的最后一个字符的下一个</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(m+n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
 <br/>
 <p>完整代码如下：</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include&lt;iostream&gt;
-using namespace std;
-const int MAXN&#x3D;1e6+5;
-int pmt[MAXN];
-void get_pmt(const string&amp; s) &#123;
-    for (int i &#x3D; 1, j &#x3D; 0; i &lt; s.length(); ++i) &#123;
-        while (j !&#x3D; 0 &amp;&amp; s[i] !&#x3D; s[j]) j &#x3D; pmt[j - 1]; &#x2F;&#x2F;字符失配，指针j回溯
-        if (s[i] &#x3D;&#x3D; s[j]) j++; &#x2F;&#x2F;字符匹配，指针j向前
-        pmt[i] &#x3D; j;
-    &#125;
-&#125;
-int kmp(const string&amp; s, const string&amp; p) &#123;
-    for (int i &#x3D; 0, j &#x3D; 0; i &lt; s.length(); ++i) &#123;
-      &#x2F;&#x2F;i是目标串指针 j是模式串指针
-        while (j &amp;&amp; s[i] !&#x3D; p[j]) j &#x3D; pmt[j - 1]; &#x2F;&#x2F;字符失配，指针j回溯
-        if (s[i] &#x3D;&#x3D; p[j]) j++; &#x2F;&#x2F;字符匹配，指针j向前
-        if (j &#x3D;&#x3D; p.length()) &#123;
-            return i - j + 2; &#x2F;&#x2F; 首个完全匹配上的位置，i-(j-1)+1,指针j处于已经匹配完的模式串的最后一个字符的下一个
-        &#125;
-    &#125;
-&#125;
-int main()
-&#123;
-    string s, p;
-    cin &gt;&gt; s &gt;&gt; p;
-    get_pmt(p);
-    cout&lt;&lt;kmp(s,p)&lt;&lt;endl;
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> MAXN<span class="token operator">=</span><span class="token number">1e6</span><span class="token operator">+</span><span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> pmt<span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">get_pmt</span><span class="token punctuation">(</span><span class="token keyword">const</span> string<span class="token operator">&amp;</span> s<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> j <span class="token operator">=</span> pmt<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//字符失配，指针j回溯</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> j<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">//字符匹配，指针j向前</span>
+        pmt<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> j<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">int</span> <span class="token function">kmp</span><span class="token punctuation">(</span><span class="token keyword">const</span> string<span class="token operator">&amp;</span> s<span class="token punctuation">,</span> <span class="token keyword">const</span> string<span class="token operator">&amp;</span> p<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token comment">//i是目标串指针 j是模式串指针</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> p<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> j <span class="token operator">=</span> pmt<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//字符失配，指针j回溯</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> p<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> j<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">//字符匹配，指针j向前</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> p<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> i <span class="token operator">-</span> j <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 首个完全匹配上的位置，i-(j-1)+1,指针j处于已经匹配完的模式串的最后一个字符的下一个</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    string s<span class="token punctuation">,</span> p<span class="token punctuation">;</span>
+    cin <span class="token operator">>></span> s <span class="token operator">>></span> p<span class="token punctuation">;</span>
+    <span class="token function">get_pmt</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    cout<span class="token operator">&lt;&lt;</span><span class="token function">kmp</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span>p<span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
   
 
@@ -342,7 +342,7 @@ int main()
     </div>
   
 </div>
-<script src="/js/prism/prism-dark.css" async></script>
+<script src="/css/prism-dark.js" async></script>
 
 
         </div>

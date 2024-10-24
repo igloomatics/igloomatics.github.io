@@ -196,7 +196,7 @@
   </div>
   
 </div>
-<link rel="stylesheet" href="/js/prism/prism-dark.css">
+<link rel="stylesheet" href="/css/prism-dark.css">
         <div class="trans">
             <h2>栈</h2>
 
@@ -207,23 +207,23 @@
 <blockquote>
 <p>设计一个算法利用顺序栈将一个十进制正整数d转换为r（2≤r≤16）进制的数，要求r进制数采用字符串string表示。</p>
 </blockquote>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">string convert(int d,int r)
-&#123;
-    stack&lt;char&gt; s;
-    const string digits&#x3D;&quot;0123456789ABCEDF&quot;;
-    string result ;
-    if(d&#x3D;&#x3D;0)return 0;
-    else if(d&gt;0)&#123;
-        int remainder&#x3D;d%r;    
-        s.push(digits[remainder]);
-        d&#x2F;&#x3D;r;
-   &#125;
-   while(!s.empty())&#123;
-       result +&#x3D; s.top() ; &#x2F;&#x2F;注意result是一个字符串!不是整型!!
-       s.pop();
-   &#125;
-   return result;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">string <span class="token function">convert</span><span class="token punctuation">(</span><span class="token keyword">int</span> d<span class="token punctuation">,</span><span class="token keyword">int</span> r<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    stack<span class="token operator">&lt;</span><span class="token keyword">char</span><span class="token operator">></span> s<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> string digits<span class="token operator">=</span><span class="token string">"0123456789ABCEDF"</span><span class="token punctuation">;</span>
+    string result <span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>d<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>d<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> remainder<span class="token operator">=</span>d<span class="token operator">%</span>r<span class="token punctuation">;</span>    
+        s<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>digits<span class="token punctuation">[</span>remainder<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        d<span class="token operator">/=</span>r<span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+   <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>s<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+       result <span class="token operator">+=</span> s<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">;</span> <span class="token comment">//注意result是一个字符串!不是整型!!</span>
+       s<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+   <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
   
 
@@ -257,7 +257,7 @@
     </div>
   
 </div>
-<script src="/js/prism/prism-dark.css" async></script>
+<script src="/css/prism-dark.js" async></script>
 
 
         </div>

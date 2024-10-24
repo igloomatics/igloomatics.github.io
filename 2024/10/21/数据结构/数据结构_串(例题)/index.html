@@ -15,7 +15,7 @@
   
   <link rel="canonical" href="http://example.com/2024/10/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E4%B8%B2(%E4%BE%8B%E9%A2%98)/">
   
-  <meta name="description" content="这次的作业题目比较经典，就简单堆放一下。  1.用带头节点的单链表表示链串，每个节点存放一个字符。设计一个算法求s中最长平台的长度，所谓平台是指连续相同字符。 #include &amp;lt;iostream&amp;gt; using namespace std;  struct ListNode &amp;#123;">
+  <meta name="description" content="这次的作业题目比较经典，就简单堆放一下。  1.用带头节点的单链表表示链串，每个节点存放一个字符。设计一个算法求s中最长平台的长度，所谓平台是指连续相同字符。 #include &amp;lt;iostream&gt; using namespace std;  struct ListNode &amp;#123;   ">
   
   
   <meta name="author" content="Igloos">
@@ -26,14 +26,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="串(例题)" />
   
-  <meta property="og:description" content="这次的作业题目比较经典，就简单堆放一下。  1.用带头节点的单链表表示链串，每个节点存放一个字符。设计一个算法求s中最长平台的长度，所谓平台是指连续相同字符。 #include &amp;lt;iostream&amp;gt; using namespace std;  struct ListNode &amp;#123;">
+  <meta property="og:description" content="这次的作业题目比较经典，就简单堆放一下。  1.用带头节点的单链表表示链串，每个节点存放一个字符。设计一个算法求s中最长平台的长度，所谓平台是指连续相同字符。 #include &amp;lt;iostream&gt; using namespace std;  struct ListNode &amp;#123;   ">
   
   <meta property="og:url" content="http://example.com/2024/10/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E4%B8%B2(%E4%BE%8B%E9%A2%98)/" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="串(例题)">
   
-  <meta name="twitter:description" content="这次的作业题目比较经典，就简单堆放一下。  1.用带头节点的单链表表示链串，每个节点存放一个字符。设计一个算法求s中最长平台的长度，所谓平台是指连续相同字符。 #include &amp;lt;iostream&amp;gt; using namespace std;  struct ListNode &amp;#123;">
+  <meta name="twitter:description" content="这次的作业题目比较经典，就简单堆放一下。  1.用带头节点的单链表表示链串，每个节点存放一个字符。设计一个算法求s中最长平台的长度，所谓平台是指连续相同字符。 #include &amp;lt;iostream&gt; using namespace std;  struct ListNode &amp;#123;   ">
   
   
   <meta name="twitter:image" content="http://example.comundefined">
@@ -196,7 +196,7 @@
   </div>
   
 </div>
-<link rel="stylesheet" href="/js/prism/prism-dark.css">
+<link rel="stylesheet" href="/css/prism-dark.css">
         <div class="trans">
             <h2>串(例题)</h2>
 
@@ -204,100 +204,100 @@
   <p>这次的作业题目比较经典，就简单堆放一下。</p>
 <hr />
 <p>1.用带头节点的单链表表示链串，每个节点存放一个字符。设计一个算法求s中最长平台的长度，所谓平台是指连续相同字符。</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
-using namespace std;
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-struct ListNode &#123;
-    char data;
-    ListNode* next;
-    ListNode(char c) : data(c), next(nullptr) &#123;&#125;
-&#125;;
+<span class="token keyword">struct</span> <span class="token class-name">ListNode</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">char</span> data<span class="token punctuation">;</span>
+    ListNode<span class="token operator">*</span> next<span class="token punctuation">;</span>
+    <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token keyword">char</span> c<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">data</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 
-&#x2F;&#x2F; 创建链表并计算最长平台长度
-int longestPlatform(const string&amp; str) &#123;
-    if (str.empty()) return 0;
+<span class="token comment">// 创建链表并计算最长平台长度</span>
+<span class="token keyword">int</span> <span class="token function">longestPlatform</span><span class="token punctuation">(</span><span class="token keyword">const</span> string<span class="token operator">&amp;</span> str<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
     
-    ListNode* head &#x3D; new ListNode(0); &#x2F;&#x2F; 头节点
-    ListNode* tail &#x3D; head;
-    for (int i&#x3D;0 ; i&lt;str.length() ;i++) &#123;
-        char c &#x3D; str[i];
-        tail-&gt;next &#x3D; new ListNode(c);
-        tail &#x3D; tail-&gt;next;
-    &#125;
+    ListNode<span class="token operator">*</span> head <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 头节点</span>
+    ListNode<span class="token operator">*</span> tail <span class="token operator">=</span> head<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span> <span class="token punctuation">;</span> i<span class="token operator">&lt;</span>str<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">char</span> c <span class="token operator">=</span> str<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        tail<span class="token operator">-></span>next <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">ListNode</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        tail <span class="token operator">=</span> tail<span class="token operator">-></span>next<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    int maxLen &#x3D; 1, currentLen &#x3D; 1;
-    ListNode* p &#x3D; head-&gt;next-&gt;next;
-    char currentChar &#x3D; head-&gt;next-&gt;data;
+    <span class="token keyword">int</span> maxLen <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> currentLen <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    ListNode<span class="token operator">*</span> p <span class="token operator">=</span> head<span class="token operator">-></span>next<span class="token operator">-></span>next<span class="token punctuation">;</span>
+    <span class="token keyword">char</span> currentChar <span class="token operator">=</span> head<span class="token operator">-></span>next<span class="token operator">-></span>data<span class="token punctuation">;</span>
 
-    while (p) &#123;
-        if (p-&gt;data &#x3D;&#x3D; currentChar) &#123;
-            currentLen++;
-        &#125; else &#123;
-            maxLen &#x3D; max(maxLen, currentLen);
-            currentChar &#x3D; p-&gt;data;
-            currentLen &#x3D; 1;
-        &#125;
-        p &#x3D; p-&gt;next;
-    &#125;
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>p<span class="token operator">-></span>data <span class="token operator">==</span> currentChar<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            currentLen<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            maxLen <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>maxLen<span class="token punctuation">,</span> currentLen<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            currentChar <span class="token operator">=</span> p<span class="token operator">-></span>data<span class="token punctuation">;</span>
+            currentLen <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        p <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    maxLen &#x3D; max(maxLen, currentLen);
+    maxLen <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>maxLen<span class="token punctuation">,</span> currentLen<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    &#x2F;&#x2F; 释放链表内存
-    while (head) &#123;
-        ListNode* temp &#x3D; head;
-        head &#x3D; head-&gt;next;
-        delete temp;
-    &#125;
+    <span class="token comment">// 释放链表内存</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        ListNode<span class="token operator">*</span> temp <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        head <span class="token operator">=</span> head<span class="token operator">-></span>next<span class="token punctuation">;</span>
+        <span class="token keyword">delete</span> temp<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
     
-    return maxLen;
-&#125;
+    <span class="token keyword">return</span> maxLen<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-int main() &#123;
-    string s;
-    cin &gt;&gt; s;
-    cout &lt;&lt; &quot;最长平台的长度是: &quot; &lt;&lt; longestPlatform(s) &lt;&lt; endl;
-    return 0;
-&#125;
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    string s<span class="token punctuation">;</span>
+    cin <span class="token operator">>></span> s<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"最长平台的长度是: "</span> <span class="token operator">&lt;&lt;</span> <span class="token function">longestPlatform</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <br/>
 <p>2.有一个顺序串s，其字符仅由数字和小写字母组成。设计一个算法将s中所有数字字符放在前半部分，所有小写字母字符放在后半部分。并给出你所设计的算法的时间和空间复杂度。</p>
 <p>思路：双指针，一个指针从字符串的头部开始向后遍历，另一个指针从字符串的尾部向前遍历（<s>怎么一股子L-BFGS双循环的味道</s>）。前面的指针用于找到小写字母字符，后面的指针用于找到数字字符，然后交换它们的位置。当两个指针相遇时，整个字符串就已经按照要求完成了重排。</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
-#include &lt;string&gt;
-using namespace std;
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-void rearrange(string &amp;s) &#123;
-    int i &#x3D; 0, j &#x3D; s.length() - 1;
+<span class="token keyword">void</span> <span class="token function">rearrange</span><span class="token punctuation">(</span>string <span class="token operator">&amp;</span>s<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> j <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
 
-    while (i &lt; j) &#123;
-        &#x2F;&#x2F; 如果s[i]是数字，继续向右移动i
-        while (i &lt; j &amp;&amp; isdigit(s[i])) &#123;
-            i++;
-        &#125;
-        &#x2F;&#x2F; 如果s[j]是字母，继续向左移动j
-        while (i &lt; j &amp;&amp; isalpha(s[j])) &#123;
-            j--;
-        &#125;
-        &#x2F;&#x2F; 如果i &lt; j，交换s[i]和s[j]
-        if (i &lt; j) &#123;
-            swap(s[i], s[j]);
-            i++;
-            j--;
-        &#125;
-    &#125;
-&#125;
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 如果s[i]是数字，继续向右移动i</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> j <span class="token operator">&amp;&amp;</span> <span class="token function">isdigit</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            i<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// 如果s[j]是字母，继续向左移动j</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> j <span class="token operator">&amp;&amp;</span> <span class="token function">isalpha</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            j<span class="token operator">--</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// 如果i &lt; j，交换s[i]和s[j]</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">swap</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            i<span class="token operator">++</span><span class="token punctuation">;</span>
+            j<span class="token operator">--</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-int main() &#123;
-    string s;
-    cout &lt;&lt; &quot;请输入字符串: &quot;;
-    cin &gt;&gt; s;
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    string s<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"请输入字符串: "</span><span class="token punctuation">;</span>
+    cin <span class="token operator">>></span> s<span class="token punctuation">;</span>
 
-    rearrange(s);
+    <span class="token function">rearrange</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    cout &lt;&lt; &quot;重排后的字符串: &quot; &lt;&lt; s &lt;&lt; endl;
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"重排后的字符串: "</span> <span class="token operator">&lt;&lt;</span> s <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
 
-    return 0;
-&#125;
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>算法只利用了双指针，没有额外储存其它数据，空间复杂度为O(1)；双指针遍历，每个字符最多被访问一次，时间复杂度为O(n)。</p>
 
@@ -333,7 +333,7 @@ int main() &#123;
     </div>
   
 </div>
-<script src="/js/prism/prism-dark.css" async></script>
+<script src="/css/prism-dark.js" async></script>
 
 
         </div>
