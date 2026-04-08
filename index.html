@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zhiyue Xu</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; }
+    ::selection { background: #d6d3cd; color: inherit; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: Lyon-Text, Georgia, ui-serif, serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #2c2c2b;
+      background: #f7f6f3;
+    }
+
+    /* ── Layout ── */
+    .page-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 4rem;
+    }
+
+    /* ── Typography ── */
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0;
+    }
+    .page-title {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 0.2em;
+      color: #1a1a1a;
+    }
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-top: 2.2rem;
+      margin-bottom: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #555;
+    }
+    p { margin-top: 0.45em; margin-bottom: 0.45em; }
+    a { color: #4a4a4a; text-decoration: none; background-image: linear-gradient(currentColor, currentColor); background-size: 0% 1px; background-repeat: no-repeat; background-position: left bottom; transition: background-size 0.2s ease; }
+    a:hover { background-size: 100% 1px; }
+    ul { margin: 0.4em 0; padding-inline-start: 1.5em; }
+    ul > li { padding-left: 0.2em; margin-bottom: 0.2em; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ── Section divider ── */
+    .section-hr {
+      border: none;
+      border-top: 1.5px solid #e0deda;
+      margin: 0.5rem 0 1.4rem;
+    }
+
+    /* ── Profile ── */
+    .profile-row {
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+    }
+    .profile-photo {
+      flex-shrink: 0;
+      width: 150px;
+    }
+    .profile-photo img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+    .profile-info { flex: 1; }
+    .profile-name-zh {
+      font-size: 0.92rem;
+      color: #666;
+      margin-bottom: 0.6em;
+    }
+    .profile-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3em 0.8em;
+      margin: 0.5em 0 0.8em;
+      font-size: 0.88rem;
+    }
+    .profile-links a {
+      color: #4a4a4a;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25em;
+    }
+    .profile-bio { font-size: 0.93rem; color: #3a3a3a; }
+
+    /* ── Research Interests ── */
+    .interests-list {
+      font-size: 0.93rem;
+      padding-inline-start: 1.4em;
+      margin: 0.5em 0;
+    }
+    .interests-list li { margin-bottom: 0.3em; }
+
+    /* ── Publications ── */
+    .pub-list { display: flex; flex-direction: column; gap: 1.6rem; margin-top: 0.8rem; }
+    .pub-item {
+      display: flex;
+      gap: 1.4rem;
+      align-items: flex-start;
+    }
+    .pub-thumb {
+      flex-shrink: 0;
+      width: 160px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid #e8e5e0;
+      background: #f0ede8;
+    }
+    .pub-thumb img { width: 100%; height: auto; }
+    .pub-body { flex: 1; }
+    .pub-title {
+      font-weight: 600;
+      font-size: 0.93rem;
+      color: #1a1a1a;
+      line-height: 1.4;
+      margin-bottom: 0.25em;
+    }
+    .pub-authors { font-size: 0.86rem; color: #555; margin-bottom: 0.25em; }
+    .pub-authors strong { color: #2c2c2b; }
+    .pub-abstract { font-size: 0.84rem; color: #666; line-height: 1.55; margin-bottom: 0.35em; }
+    .pub-venue { font-size: 0.84rem; color: #444; }
+    .pub-venue a { color: #4a4a4a; font-weight: 500; margin-right: 0.4em; }
+    .pub-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.1em 0.55em;
+      border-radius: 4px;
+      margin-right: 0.4em;
+      background: #e8f0fe;
+      color: #4a4a4a;
+    }
+    .pub-badge.preprint { background: #fef3c7; color: #92400e; }
+
+    /* ── Experience timeline ── */
+    .exp-list { display: flex; flex-direction: column; gap: 0; margin-top: 0.8rem; position: relative; padding-left: 28px; }
+    .exp-list::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 10px;
+      bottom: 10px;
+      width: 1.5px;
+      background: #ccc9c4;
+    }
+    .exp-item { position: relative; margin-bottom: 1.2rem; }
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 10px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid #a8a49f;
+      background: #fff;
+    }
+    .exp-card {
+      background: #fff;
+      border: 1px solid #e5e2dc;
+      border-radius: 10px;
+      padding: 1.1em 1.3em;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      transition: box-shadow 0.15s;
+    }
+    .exp-card:hover { box-shadow: 0 3px 10px rgba(0,0,0,0.09); }
+    .exp-card-header { display: flex; align-items: flex-start; gap: 0.85em; margin-bottom: 0.7em; }
+    .exp-logo {
+      width: 40px; height: 40px;
+      object-fit: contain;
+      border-radius: 6px;
+      border: 1px solid #eee;
+      flex-shrink: 0;
+      background: #fafafa;
+    }
+    .exp-card-title { font-weight: 700; font-size: 0.92rem; color: #1a1a1a; line-height: 1.3; }
+    .exp-card-org { font-size: 0.87rem; color: #444; margin-top: 0.1em; }
+    .exp-card-meta { font-size: 0.8rem; color: #999; margin-top: 0.1em; }
+    .exp-card p { font-size: 0.88rem; color: #555; margin: 0; line-height: 1.6; }
+
+    /* ── Education ── */
+    .edu-list { margin-top: 0.5rem; }
+    .edu-item {
+      display: flex;
+      gap: 1.2rem;
+      padding: 0.6em 0;
+      border-bottom: 1px solid #eee;
+      font-size: 0.9rem;
+    }
+    .edu-item:last-child { border-bottom: none; }
+    .edu-years { flex-shrink: 0; width: 110px; color: #888; font-size: 0.84rem; padding-top: 0.05em; }
+    .edu-body { flex: 1; }
+    .edu-degree { font-weight: 600; color: #1a1a1a; }
+    .edu-inst { color: #555; }
+
+    /* ── Awards ── */
+    .award-list { margin-top: 0.5rem; font-size: 0.9rem; }
+    .award-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6em;
+      padding: 0.35em 0;
+      border-bottom: 1px solid #f0ede8;
+    }
+    .award-item:last-child { border-bottom: none; }
+    .award-item::before { content: '🏅'; font-size: 0.85em; flex-shrink: 0; }
+    .award-name { flex: 1; color: #2c2c2b; }
+    .award-year { color: #999; font-size: 0.84rem; white-space: nowrap; }
+
+    /* ── Miscs ── */
+    .miscs-body { font-size: 0.9rem; color: #555; margin-top: 0.5rem; }
+    .miscs-body p { margin: 0.35em 0; }
+
+    /* ── Projects ── */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem;
+      margin-top: 0.8rem;
+    }
+    .proj-card {
+      background: #fff;
+      border: 1px solid #e5e2dc;
+      border-radius: 14px;
+      padding: 1.5em 1.5em 1.2em;
+      display: flex;
+      flex-direction: column;
+      min-height: 180px;
+    }
+    .proj-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1em;
+      margin-bottom: 0.75em;
+    }
+    .proj-title { font-size: 1.1rem; font-weight: 700; color: #1a1a1a; line-height: 1.3; }
+    .proj-thumb {
+      flex-shrink: 0;
+      width: 72px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 7px;
+      border: 1px solid #e5e2dc;
+      background: #f0ede8;
+    }
+    .proj-desc { font-size: 0.87rem; color: #666; line-height: 1.6; flex: 1; margin-bottom: 1.2em; }
+    .proj-links { display: flex; gap: 0.5em; margin-top: auto; }
+    .proj-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3em;
+      font-size: 0.8rem;
+      color: #555 !important;
+      background: #f2efe9;
+      border: 1px solid #dedad4;
+      border-radius: 20px;
+      padding: 0.28em 0.85em;
+      text-decoration: none !important;
+      background-image: none !important;
+      background-size: unset !important;
+      transition: background 0.15s;
+    }
+    .proj-btn:hover { background: #e8e4dd; background-image: none !important; }
+    @media (max-width: 580px) { .proj-grid { grid-template-columns: 1fr; } }
+
+    /* ── Footer ── */
+    .page-footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e0deda;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .page-wrap { padding: 2rem 1.2rem 3rem; }
+      .profile-row { flex-direction: column; gap: 1.2rem; }
+      .profile-photo { width: 100px; }
+      .profile-photo img { width: 100px; height: 100px; }
+      .pub-item { flex-direction: column; }
+      .pub-thumb { width: 100%; }
+      .edu-item { flex-direction: column; gap: 0.2rem; }
+      .edu-years { width: auto; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- ── Header ── -->
+  <header>
+    <h1 class="page-title">Zhiyue Xu</h1>
+  </header>
+
+  <!-- ── Profile ── -->
+  <div class="profile-row">
+    <div class="profile-photo">
+      <img src="images/profile/avatar.jpg" alt="Zhiyue Xu"/>
+    </div>
+    <div class="profile-info">
+<div class="profile-links">
+        <span>📍 Beijing, China</span>
+        <span>📮 <a href="mailto:xuzhiyue2026@ia.ac.cn">xuzhiyue2026@ia.ac.cn</a></span>
+        <a href="https://github.com/igloomatics">GitHub</a> | 
+        <a href="">Google Scholar</a>
+      </div>
+      <div class="profile-bio">
+        <p>👋 Hi! I am a coming Ph.D. student at the
+        <strong><a href="http://www.ia.cas.cn/">Institute of Automation, University of Chinese Academy of Sciences (CASIA)</a></strong>,
+        currently in a joint training program with <strong><a href="http://bza.edu.cn/">Zhongguancun Academy(ZGCA)</a></strong>,
+        under the supervision of
+        <strong><a href="https://people.ucas.edu.cn/~xuyaozhang">Prof. Xuyao Zhang</a></strong>
+        and
+        <strong><a href="https://jianzhao-zgci.github.io/">Prof. Jian Zhao</a></strong>.</p>
+        <p>Now I'm a 4th-year undergraduate student pursuing my Bachelor's degree in Mathematics and Statistics at Wuhan University.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Research Interests ── -->
+  <h2>Research Interests</h2>
+  <hr class="section-hr"/>
+  <p style="font-size:0.93rem;color:#444;">My research interests now lie at the intersection of Security and large language models. Generally, I'm strongly interested in:</p>
+  <ul class="interests-list">
+    <li><strong>Agent Security</strong> | Creating secure Agent frameworks or make personal assistants like openclaw more secure</li>
+    <li><strong>Red vs. Blue Team Exercise</strong> | Exploring more effective attack and defense strategies for llm</li>
+    <li><strong>Safety Training</strong> | Innately build helpful, harmless and honest model </li>
+    <li><strong>Alignment for human values and intentions</strong> | Ensuring that AI systems align with human values and intentions</li>
+    <li><strong>Model Mechanistic Interpretability</strong> | Opening the black box: understanding how knowledge, reasoning, and behavior emerge from the internal circuits and representations of large language models. </li>
+  </ul>
+
+  <!-- ── Publications ── -->
+  <!--
+  <h2>Publications</h2>
+  <hr class="section-hr"/>
+  <p style="font-size:0.88rem;color:#666;">First-author and co-first-author publications. Full list on <a href="https://scholar.google.com/citations?hl=en&user=ZR_IZ84AAAAJ&view_op=list_works&sortby=pubdate">Google Scholar</a>.</p>
+
+  <div class="pub-list">
+
+    <div class="pub-item">
+      <div class="pub-thumb">
+        <img src="images/publications/mcma.png" alt="MCMA"/>
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">Learning How to Remember: A Meta-Cognitive Management Method for Structured and Transferable Agent Memory</div>
+        <div class="pub-authors"><strong>Sirui Liang</strong>, Pengfei Cao, Jian Zhao, Wenhao Teng, Xiangwen Liao, Jun Zhao, Kang Liu</div>
+        <div class="pub-abstract">We propose MCMA, a meta-cognitive memory abstraction method that transforms memories from inflexible storage into a transferable resource via structural abstract representations and reusable hierarchical abstractions.</div>
+        <div class="pub-venue">
+          <span class="pub-badge preprint">Preprint</span>
+          <a href="https://arxiv.org/pdf/2601.07470">Paper</a>
+          <a href="https://github.com/LiangThree/MCMA.git">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">
+        <img src="images/publications/brep.jpg" alt="BREP ReFT"/>
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">Bias-Restrained Prefix Representation Finetuning for Mathematical Reasoning</div>
+        <div class="pub-authors"><strong>Sirui Liang</strong>, Pengfei Cao, Jian Zhao, Cong Huang, Jun Zhao, Kang Liu</div>
+        <div class="pub-abstract">We propose BREP ReFT, which enhances ReFT's mathematical reasoning capability through bias-restrained prefix representation fine-tuning.</div>
+        <div class="pub-venue">
+          <span class="pub-badge">AAAI 2026</span>
+          <a href="https://arxiv.org/pdf/2511.10707">Paper</a>
+          <a href="https://github.com/LiangThree/BREP">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">
+        <img src="images/publications/abseval.jpg" alt="ABSEval"/>
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">ABSEval: An Agent-Based Framework for Script Evaluation</div>
+        <div class="pub-authors"><strong>Sirui Liang</strong>, Baoli Zhang, Jun Zhao, Kang Liu</div>
+        <div class="pub-abstract">We introduce MCScript, a novel dataset of 1,500+ script evaluation tasks, and ABSEval, an agent-based framework for collaboratively evaluating scripts generated by LLMs.</div>
+        <div class="pub-venue">
+          <span class="pub-badge">EMNLP 2024</span>
+          <a href="https://aclanthology.org/2024.emnlp-main.691.pdf">Paper</a>
+          <a href="https://github.com/LiangThree/ABSEval">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">
+        <img src="images/publications/zhujiu.jpg" alt="ZhuJiu"/>
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">ZhuJiu-Knowledge: A Fairer Platform for Evaluating Multiple Knowledge Types in Large Language Models</div>
+        <div class="pub-authors">Pengfan Du, <strong>Sirui Liang</strong>, Baoli Zhang, Pengfei Cao, Yubo Chen, Kang Liu, Jun Zhao</div>
+        <div class="pub-abstract">We introduce the ZhuJiu-Knowledge benchmark for fair multi-type knowledge evaluation of LLMs.</div>
+        <div class="pub-venue">
+          <span class="pub-badge">NAACL Demo 2024</span>
+          <a href="https://aclanthology.org/2024.naacl-demo.20.pdf">Paper</a>
+          <a href="http://zhujiu-knowledge.top/">Leaderboard</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">
+        <img src="images/publications/rmlr.png" alt="Rm-LR"/>
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">Rm-LR: A Long-Range-Based Deep Learning Model for Predicting Multiple Types of RNA Modifications</div>
+        <div class="pub-authors"><strong>Sirui Liang</strong>, Yanxi Zhao, Junru Jin, Jianbo Qiao, Ding Wang, Yu Wang, Leyi Wei</div>
+        <div class="pub-abstract">We propose Rm-LR, a long-range-based deep learning approach to accurately predict multiple types of RNA modifications from sequences only.</div>
+        <div class="pub-venue">
+          <span class="pub-badge">Computers in Biology and Medicine</span>
+          <a href="https://aclanthology.org/2024.naacl-demo.20.pdf">Paper</a>
+          <a href="https://github.com/LiangThree/Rm-LR">Code</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  -->
+
+  <!-- ── Experience & Project ── -->
+  <h2>Experience &amp; Project</h2>
+  <hr class="section-hr"/>
+
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-card">
+        <div class="exp-card-header">
+          <img class="exp-logo" src="images/experience/北京大学-logo.svg" alt="Peking University"
+               onerror="this.style.background='#eee';this.removeAttribute('onerror')"/>
+          <div>
+            <div class="exp-card-title">AI for Mathematics Program</div>
+            <div class="exp-card-org">Peking University</div>
+            <div class="exp-card-meta">January 2025 – April 2025 &nbsp;·&nbsp; Shenzhen</div>
+          </div>
+        </div>
+        <p>Under the supervision of <a href="#">Prof. Zaiwen Wen</a> , I delved into AI4m , systematically study <strong>Lean4</strong>(a formal language), and contribute to the development of the world's first formalized optimization theorem library.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-card">
+        <div class="exp-card-header">
+          <img class="exp-logo" src="images/experience/武汉大学-logo.svg" alt="Wuhan University"
+               onerror="this.style.background='#eee';this.removeAttribute('onerror')"/>
+          <div>
+            <div class="exp-card-title">Undergraduate Research Intern</div>
+            <div class="exp-card-org">Wuhan University</div>
+            <div class="exp-card-meta">July 2024 – Feb 2025 &nbsp;·&nbsp; Wuhan</div>
+          </div>
+        </div>
+        <p>Under the supervision of <a href="#">Prof. Feng Wang</a> , I have thoroughly studied Algorithmic Game Theory and read several research papers.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-card">
+        <div class="exp-card-header">
+          <img class="exp-logo" src="images/experience/cambridge-logo.png" alt="University of Cambridge"
+               onerror="this.style.background='#eee';this.removeAttribute('onerror')"/>
+          <div>
+            <div class="exp-card-title">International Summer Exchange Program</div>
+            <div class="exp-card-org">University of Cambridge</div>
+            <div class="exp-card-meta">July 2023 – August 2023 &nbsp;·&nbsp; Cambridge</div>
+          </div>
+        </div>
+        <p>During the "Frontiers in Artificial Intelligence" lecture series provided by Prof. Pietro Liò , I gained in-depth knowledge of <strong>Reinforcement Learning</strong>, focusing on building multi-Agent systems. 
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Projects ── -->
+  <!--
+  <h2>Projects</h2>
+  <hr class="section-hr"/>
+  <div class="proj-grid">
+
+    <div class="proj-card">
+      <div>
+        <div class="proj-top">
+          <div class="proj-title">Lumina 具身社区</div>
+          <img class="proj-thumb" src="images/projects/lumina.png" alt="Lumina"
+               onerror="this.style.opacity='0';this.removeAttribute('onerror')"/>
+        </div>
+        <div class="proj-desc">一个关于具身智能的社区</div>
+      </div>
+      <div class="proj-links">
+        <a class="proj-btn" href="#"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Site</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div>
+        <div class="proj-top">
+          <div class="proj-title">Vote Web</div>
+          <img class="proj-thumb" src="images/projects/voteweb.png" alt="Vote Web"
+               onerror="this.style.opacity='0';this.removeAttribute('onerror')"/>
+        </div>
+        <div class="proj-desc">一个投票网站，用户可以上传自己的简历和判断其他人的保研去向，并统计情况。前后端采用 Next.js，支持账户注册</div>
+      </div>
+      <div class="proj-links">
+        <a class="proj-btn" href="#"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Site</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div>
+        <div class="proj-top">
+          <div class="proj-title">CS-BAOYAN-DDL</div>
+          <img class="proj-thumb" src="images/projects/baoyan.png" alt="CS-BAOYAN-DDL"
+               onerror="this.style.opacity='0';this.removeAttribute('onerror')"/>
+        </div>
+        <div class="proj-desc">CCFDDL Like 的保研夏令营/预推免时间汇总</div>
+      </div>
+      <div class="proj-links">
+        <a class="proj-btn" href="#"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Site</a>
+        <a class="proj-btn" href="#"><svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:-1px"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> Github</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div>
+        <div class="proj-top">
+          <div class="proj-title">Minimalist Text Framework</div>
+          <img class="proj-thumb" src="images/projects/mtf.png" alt="Minimalist Text Framework"
+               onerror="this.style.opacity='0';this.removeAttribute('onerror')"/>
+        </div>
+        <div class="proj-desc">基于 Astro 的极简文本游戏框架，仅通过 JSON 文件即可生成游戏</div>
+      </div>
+      <div class="proj-links">
+        <a class="proj-btn" href="#"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Site</a>
+        <a class="proj-btn" href="#"><svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:-1px"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> Github</a>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!-- ── Educations ── -->
+  <h2>Education</h2>
+  <hr class="section-hr"/>
+
+  <div class="edu-list">
+    <div class="edu-item">
+      <div class="edu-years">2022 – 2026</div>
+      <div class="edu-body">
+        <div class="edu-degree">B.S. in Mathematics and Statistics</div>
+        <div class="edu-inst">School of Mathematics and Statistics, Wuhan University</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-years">2026 – Now</div>
+      <div class="edu-body">
+        <div class="edu-degree">Ph.D. Candidate</div>
+        <div class="edu-inst">Institute of Automation, UCAS &amp; Zhongguancun Academy
+          (Supervisors: <a href="https://nlpr.ia.ac.cn/cip/~liukang/index.html">Prof. Xuyao Zhang</a>
+          and <a href="https://scholar.google.com/citations?user=n6zuurcAAAAJ&hl=en&oi=ao">Prof. Jian Zhao</a>)
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- ── Awards ── -->
+  <h2>Awards</h2>
+  <hr class="section-hr"/>
+
+  <div class="award-list">
+    <div class="award-item">
+      <span class="award-name">Zhongguancun Academy Outstanding Camper Representatives</span>
+      <span class="award-year">2025</span>
+    </div>
+    <div class="award-item">
+      <span class="award-name">Wuhan University, Huang Xunteng Scholarship</span>
+      <span class="award-year">2025</span>
+    </div>
+    <div class="award-item">
+      <span class="award-name">Wuhan University Outstanding Student Scholarship</span>
+      <span class="award-year">2025, 2024, 2023</span>
+    </div>
+  </div>
+
+  <!-- ── Miscs ── -->
+  <h2>Miscs</h2>
+  <hr class="section-hr"/>
+
+  <div class="miscs-body">
+    <p>open-source lover &amp; amateur independent producer</p>
+    <p>I love creating things(even since I was a child), including 💻 small projects, 🎮 games, and 🎵 music.</p>
+    <p>🇺🇸 English &nbsp;|&nbsp; 🇨🇳 中文 &nbsp;|&nbsp; 🇯🇵 日本語 (Learning)</p>
+    <p>other hobbies include 🏸 Badminton, 📺 Anime, 🖌️ drawing.</p>
+  </div>
+
+  <!-- ── Footer ── -->
+  <div class="page-footer">
+    Updated 4/8/2026.
+    <span id="busuanzi_container_site_pv" style="display:none">
+      &nbsp;·&nbsp; Visitors: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</body>
+</html>
